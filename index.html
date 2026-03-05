@@ -493,38 +493,72 @@ right: 240px;
 
     
 
-    // --- DAILY REWARD ---
+  <script>
+    // Gunakan huruf kecil 'const'
     const COOLDOWN = 24 * 60 * 60 * 1000;
+
     function updateDailyTimer() {
       const last = localStorage.getItem('lastDailyClaim');
       const display = document.getElementById('TIMES');
-      if (!last) return display.innerText = "READY!";
+      
+      // Safety check jika elemen tidak ditemukan di HTML
+      if (!display) return;
+
+      if (!last) {
+        display.innerText = "READY!";
+        return;
+      }
+
       const left = (parseInt(last) + COOLDOWN) - Date.now();
-      if (left <= 0) display.innerText = "READY!";
-      else {
-        const h = Math.floor(left/3600000), m = Math.floor((left%3600000)/60000), s = Math.floor((left%60000)/1000);
+
+      if (left <= 0) {
+        display.innerText = "READY!";
+      } else {
+        const h = Math.floor(left / 3600000);
+        const m = Math.floor((left % 3600000) / 60000);
+        const s = Math.floor((left % 60000) / 1000);
         display.innerText = `${h}h ${m}m ${s}s`;
+      }
+    }
+
+    // Fungsi placeholder agar tidak error saat dipanggil
+    function updateMainColin() {
+      const display = document.getElementById('colinCount'); // Sesuaikan ID-nya
+      if (display) {
+        display.innerText = localStorage.getItem('mixGuyColin') || '0';
       }
     }
 
     document.getElementById('dailybut').onclick = () => {
       const last = localStorage.getItem('lastDailyClaim');
-      if (!last || Date.now() > (parseInt(last) + COOLDOWN)) {
+      const now = Date.now();
+
+      if (!last || now > (parseInt(last) + COOLDOWN)) {
         let c = parseInt(localStorage.getItem('mixGuyColin') || '0') + 300;
         localStorage.setItem('mixGuyColin', c);
-        localStorage.setItem('lastDailyClaim', Date.now());
+        localStorage.setItem('lastDailyClaim', now);
+        
         updateMainColin();
+        updateDailyTimer(); // Langsung update tampilan timer
         alert("🎁 +300 Colin!");
-      } else alert("Wait for cooldown!");
+      } else {
+        alert("Wait for cooldown!");
+      }
     };
 
     window.onload = () => {
       updateMainColin();
-      loadCustomGames();
+      // Pastikan fungsi loadCustomGames ada di bagian lain kodemu
+      if (typeof loadCustomGames === "function") loadCustomGames(); 
+      
+      updateDailyTimer(); // Jalankan sekali saat load
       setInterval(updateDailyTimer, 1000);
     };
 
-    document.getElementById('storebut').onclick = () => document.getElementById('storeModal').style.display = 'flex';
-  </script>
+    document.getElementById('storebut').onclick = () => {
+      const modal = document.getElementById('storeModal');
+      if (modal) modal.style.display = 'flex';
+    };
+</script>
 </body>
 </html>
