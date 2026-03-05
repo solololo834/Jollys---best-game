@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+5<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -10,58 +10,60 @@
     #profileArea { padding: 30px; position: relative; }
     #pfp { height: 120px; border-radius: 50%; border: 6px solid #FFDA37; background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: cover; }
     #colinDisplay { background: #fff; border: 3px solid #333; display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-top: 10px; font-size: 18px; color: #b8860b; }
-    #skinButton { position: relative; right: 80px; cursor: pointer; background: none; border: none; transition: 0.3s; vertical-align: middle; margin-left: 10px; width: 100px; height: 100px; }
+    #skinButton { position: relative; right: 100px; cursor: pointer; background: none; border: none; transition: 0.3s; vertical-align: middle; margin-left: 10px; width: 100px; height: 100px; }
     #skinButton:hover { transform: scale(1.1) rotate(5deg); }
-    .game-container { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; padding: 20px; }
-    .game-card { width: 150px; cursor: pointer; transition: 0.3s; position: relative; }
-    .game-card:hover { transform: translateY(-8px); }
-    .game-card img { width: 130px; height: 130px; border-radius: 25px; border: 4px solid #333; background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); object-fit: cover; }
-    .game-card p { font-weight: bold; font-size: 13px; margin-top: 15px; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.2; }
-    .icon-placeholder { width: 130px; height: 130px; border-radius: 25px; border: 4px dashed #333; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 50px; margin: 0 auto; }
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px); }
-    .modal-content { background: white; padding: 10px; border-radius: 30px; width: 50%; max-width: 450px; position: relative; border: 6px solid #FFDA37; box-shadow: 0 25px 50px rgba(0,0,0,0.5); max-height: 85vh; overflow-y: auto; }
-    label { display: block; text-align: left; font-weight: bold; margin-top: 15px; font-size: 14px; }
-    input[type="text"], input[type="file"], textarea { width: 100%; padding: 12px; margin-top: 5px; border-radius: 12px; border: 3px solid #eee; box-sizing: border-box; font-family: inherit; }
-    textarea { font-family: monospace; height: 120px; resize: none; }
-    .btn-save { width: 100%; padding: 15px; background: #FFDA37; border: 4px solid #333; font-weight: bold; border-radius: 15px; cursor: pointer; margin-top: 20px; font-size: 16px; }
-    .close-btn { position: absolute; top: 10px; right: 10px; cursor: pointer; background: #ff4444; color: white; border: 3px solid #333; border-radius: 50%; width: 35px; height: 35px; font-weight: bold; z-index: 10; }
-    #gameArea { background: #aeefff; border-color: #7ed2e8; }
-    #soap { font-size: 110px; cursor: pointer; user-select: none; display: inline-block; margin: 25px; transition: 0.1s; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
-    #soap:active { transform: scale(1.25) rotate(10deg); }
-    .stats-box { background: rgba(255,255,255,0.7); padding: 15px; border-radius: 20px; border: 2px solid #333; margin-bottom: 20px; font-size: 18px; font-weight: bold; }
-    .shop-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .btn-buy { background: #fff; border: 3px solid #333; padding: 12px; cursor: pointer; font-weight: bold; border-radius: 15px; font-size: 14px; transition: 0.2s; }
-    .btn-buy:hover { background: #FFDA37; }
-    #boostStatus { color: #ff0000; font-weight: bold; font-size: 20px; margin-bottom: 15px; display: none; text-shadow: 1px 1px 0 #fff; animation: blink 1s infinite; }
-    @keyframes blink { 50% { opacity: 0.7; } }
     
-    #storebut { position: relative; width: 150px; height: 150px; bottom: 150px; left: 150px; cursor: pointer; }
+    /* Grid Games */
+    .game-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 20px; }
+    .game-card { width: 140px; cursor: pointer; transition: 0.3s; position: relative; }
+    .game-card:hover { transform: translateY(-8px); }
+    .game-card img { width: 120px; height: 120px; border-radius: 20px; border: 4px solid #333; background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); object-fit: cover; }
+    .game-card p { font-weight: bold; font-size: 12px; margin-top: 10px; text-transform: uppercase; }
+    .icon-placeholder { width: 120px; height: 120px; border-radius: 20px; border: 4px dashed #333; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto; }
+
+    /* FULLSCREEN MODAL SYSTEM */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; display: none; flex-direction: column; overflow-y: auto; }
+    .modal-content { padding: 40px 20px; width: 100%; box-sizing: border-box; min-height: 100%; position: relative; }
+    .close-btn { position: fixed; top: 20px; right: 20px; cursor: pointer; background: #ff4444; color: white; border: 3px solid #333; border-radius: 50%; width: 45px; height: 45px; font-weight: bold; z-index: 3000; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    
+    /* Input UI */
+    label { display: block; text-align: left; font-weight: bold; margin-top: 15px; }
+    input[type="text"], input[type="file"], textarea { width: 100%; padding: 15px; margin-top: 10px; border-radius: 15px; border: 3px solid #eee; box-sizing: border-box; font-size: 16px; }
+    .btn-save { width: 100%; padding: 20px; background: #FFDA37; border: 4px solid #333; font-weight: bold; border-radius: 20px; cursor: pointer; margin-top: 20px; font-size: 18px; }
+
+    /* Wash Game Custom UI */
+    #gameArea { background: #aeefff; height: 100%; }
+    #soap { font-size: 150px; cursor: pointer; user-select: none; display: inline-block; margin: 40px 0; transition: 0.1s; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); }
+    #soap:active { transform: scale(1.2) rotate(10deg); }
+    .stats-box { background: white; padding: 20px; border-radius: 25px; border: 4px solid #333; margin-bottom: 20px; font-size: 22px; font-weight: bold; }
+    .shop-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 500px; margin: 0 auto; }
+    .btn-buy { background: #fff; border: 3px solid #333; padding: 15px; cursor: pointer; font-weight: bold; border-radius: 15px; }
+
+    /* Daily Reward (UNTOUCHED DESIGN) */
+    #storebut { position: relative; width: 150px; height: 150px; bottom: 180px; left: 150px; cursor: pointer; }
     #dailybut { position: relative; width: 170px; height: 170px; bottom: -20px; left: -70px; cursor: pointer; }
     #TIMES { position: relative; bottom: 75px; background-color: white; padding: 5px; border-radius: 10px; display: inline-block; }
 
-    .store-layout { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; min-height: 200px; }
-    .delete-game-btn { position: absolute; top: -5px; right: -5px; background: red; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; font-size: 14px; cursor: pointer; font-weight: bold; z-index: 10; display: flex; align-items: center; justify-content: center; }
-    .skin-unlocked { color: green; font-weight: bold; font-size: 18px; margin-top: 15px; }
-    .skin-locked { color: red; font-weight: bold; }
-    
-    #setting { position: relative; bottom: 100px; right: 150px; cursor: pointer; }
-    #setcon { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
+    /* Settings & Space Mode */
+    #setting { position: absolute; top: 10px; left: 20px; cursor: pointer; font-size: 30px; }
+    #setcon { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 4000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
     #space { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; object-fit: cover; display: none; }
     .space-active { background: #000 !important; color: #fff !important; }
+    .delete-game-btn { position: absolute; top: -5px; right: -5px; background: red; color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; z-index: 10; font-weight: bold; }
   </style>
 </head>
 
 <body id="body">
   <div id="setcon">
     <h2>SETTINGS</h2>
-    <button type="button" id="spacon" class="btn-save" style="width: 200px;">TOGGLE SPACE MODE</button>
-    <button type="button" class="btn-save" style="width: 200px; background: #ff4444;" onclick="document.getElementById('setcon').style.display='none'">CLOSE</button>
+    <button type="button" id="spacon" class="btn-save" style="width: 250px;">TOGGLE SPACE MODE</button>
+    <button type="button" class="btn-save" style="width: 250px; background: #ff4444;" onclick="document.getElementById('setcon').style.display='none'">CLOSE</button>
   </div>
 
   <img src="space.png" id="space" alt="space background" />
   
   <div id="header">JOLLYS</div>
-  <h1 id="setting">⚙️</h1>
+  <div id="setting">⚙️</div>
 
   <div id="profileArea">
     <img src="beni.png" id="pfp" alt="profile" onerror="this.src='https://via.placeholder.com/120/eee/333?text=USER'"/>
@@ -100,84 +102,102 @@
     </div>
   </div>
 
-  <div id="storeModal" class="modal-overlay"><div class="modal-content"><button class="close-btn" onclick="closeModals()">X</button><h2>🛒IJOLLYSHOP</h2><div class="store-layout"><p>No games or skins available yet...</p></div></div></div>
-  <div id="skinModal" class="modal-overlay"><div class="modal-content"><button class="close-btn" onclick="closeModals()">X</button><h2>🎨 SKIN COLLECTION</h2><div id="skinContent"></div></div></div>
-  <div id="gameModal" class="modal-overlay">
-    <div class="modal-content" id="gameArea">
-      <button class="close-btn" onclick="closeModals()">X</button>
-      <h2>🧼 Wash To Eat</h2>
-      <div id="boostStatus">🔥 2X BOOST ACTIVE! 🔥</div>
-      <div class="stats-box">Money: <span id="moneyDisp">0</span> 💰 | Clean: <span id="percentDisp">0%</span></div>
-      <div id="soap">🧼</div>
-      <div class="shop-container">
-        <button class="btn-buy" onclick="buyItem('Sponge', 20, 2)">🧽 Sponge 20</button>
-        <button class="btn-buy" onclick="buyItem('Water', 50, 5)">🚿 Water 50</button>
-        <button class="btn-buy" onclick="buyItem('Soap', 100, 12)">🧴 Soap 100</button>
-        <button class="btn-buy" onclick="buyItem('Bucket', 200, 35)">🪣 Bucket 200</button>
-      </div>
-      <div id="chicken" style="display:none; font-size: 40px; margin-top: 15px;">🍗 YUM! SKIN UNLOCKED!</div>
+  <div id="storeModal" class="modal-overlay">
+    <button class="close-btn" onclick="closeModals()">✕</button>
+    <div class="modal-content">
+      <h2>🛒 IJOLLY SHOP</h2>
+      <hr>
+      <div class="store-layout"><p>No games or skins available yet...</p></div>
     </div>
   </div>
-  <div id="creatorModal" class="modal-overlay"><div class="modal-content"><button class="close-btn" onclick="closeModals()">X</button><h2>⚒️ GAME CREATOR</h2><input type="text" id="customGameName" placeholder="Game Name"><input type="file" id="customGameIcon" accept="image/*"><textarea id="customGameCode" placeholder="Paste HTML code here..."></textarea><button class="btn-save" onclick="saveNewGame()">💾 SAVE GAME</button></div></div>
-  <div id="playCustomModal" class="modal-overlay"><div class="modal-content" style="max-width: 90%; width: 90%; height: 80vh;"><button class="close-btn" onclick="closeModals()">X</button><iframe id="gameRunner" style="width: 100%; height: 100%; border: none;"></iframe></div></div>
+
+  <div id="skinModal" class="modal-overlay">
+    <button class="close-btn" onclick="closeModals()">✕</button>
+    <div class="modal-content">
+      <h2>🎨 SKIN COLLECTION</h2>
+      <hr>
+      <div id="skinContent"></div>
+    </div>
+  </div>
+
+  <div id="gameModal" class="modal-overlay">
+    <button class="close-btn" onclick="closeModals()">✕</button>
+    <div class="modal-content" id="gameArea">
+      <h2>🧼 Wash To Eat</h2>
+      <div class="stats-box">
+        Money: <span id="moneyDisp">0</span> 💰<br>
+        Clean: <span id="percentDisp">0%</span>
+      </div>
+      <div id="soap">🧼</div>
+      <div class="shop-container">
+        <button class="btn-buy" onclick="buyItem('Sponge', 20, 2)">🧽 Sponge (20)</button>
+        <button class="btn-buy" onclick="buyItem('Water', 50, 5)">🚿 Water (50)</button>
+        <button class="btn-buy" onclick="buyItem('Soap', 100, 12)">🧴 Soap (100)</button>
+        <button class="btn-buy" onclick="buyItem('Bucket', 200, 35)">🪣 Bucket (200)</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="creatorModal" class="modal-overlay">
+    <button class="close-btn" onclick="closeModals()">✕</button>
+    <div class="modal-content">
+      <h2>⚒️ GAME CREATOR</h2>
+      <input type="text" id="customGameName" placeholder="Game Name">
+      <label>Icon:</label>
+      <input type="file" id="customGameIcon" accept="image/*">
+      <label>HTML Code:</label>
+      <textarea id="customGameCode" placeholder="Paste HTML code here..."></textarea>
+      <button class="btn-save" onclick="saveNewGame()">💾 SAVE GAME</button>
+    </div>
+  </div>
+
+  <div id="playCustomModal" class="modal-overlay" style="background: #000;">
+    <button class="close-btn" onclick="closeModals()">✕</button>
+    <iframe id="gameRunner" style="width: 100%; height: 100%; border: none;"></iframe>
+  </div>
 
   <script>
-    // --- SETTINGS LOGIC ---
-    let setting = document.getElementById("setting");
-    let setcon = document.getElementById("setcon");
-    let spacon = document.getElementById("spacon");
-    let spaceImg = document.getElementById("space");
-
-    setting.onclick = function(){
-      setcon.style.display = "flex";
-    }
-    
-    spacon.onclick = function() {
-      if(spaceImg.style.display === "block") {
-        spaceImg.style.display = "none";
+    // --- SETTINGS ---
+    document.getElementById("setting").onclick = () => document.getElementById('setcon').style.display = "flex";
+    document.getElementById("spacon").onclick = () => {
+      let s = document.getElementById("space");
+      if(s.style.display === "block") {
+        s.style.display = "none";
         document.body.classList.remove("space-active");
       } else {
-        spaceImg.style.display = "block";
+        s.style.display = "block";
         document.body.classList.add("space-active");
-header.style.background = "linear-gradient(135deg, #E262BC, #003DD8)";
-header.style.color = "black"; 
-
+        document.getElementById("header").style.background = "linear-gradient(135deg, #E262BC, #003DD8)";
       }
-    }
+    };
 
-    // --- GAME LOGIC ---
+    // --- GAME DATA ---
     let money = 0;
     let cleanProgress = 0;
     let basePower = 1;
     let currentPower = 1;
     let isHolding = false;
-    let boostActive = false;
-    
-    if (localStorage.getItem('doodleSkin') === null) localStorage.setItem('doodleSkin', 'false');
-    if (localStorage.getItem('mixGuyColin') === null) localStorage.setItem('mixGuyColin', '0');
 
     function updateMainColin() {
       document.getElementById('mainColinCount').innerText = localStorage.getItem('mixGuyColin') || '0';
     }
 
     function openWashGame() { 
-      loadWashGameProgress();
+      cleanProgress = parseInt(localStorage.getItem('washProgress') || '0');
+      document.getElementById('percentDisp').innerText = cleanProgress.toLocaleString() + "%";
       document.getElementById('gameModal').style.display = 'flex'; 
     }
-    
-    function openCreator() { 
-      document.getElementById('creatorModal').style.display = 'flex'; 
-    }
+
+    function openCreator() { document.getElementById('creatorModal').style.display = 'flex'; }
     
     function openSkinModal() {
       const content = document.getElementById('skinContent');
       const isUnlocked = localStorage.getItem('doodleSkin') === 'true';
-      
       if (isUnlocked) {
-        content.innerHTML = '<img src="doodle.png" style="width:140px; border:4px solid #FFDA37; border-radius:20px; background:white; padding:10px;" onerror="this.src=\'https://via.placeholder.com/140?text=DOODLE\'"><p class="skin-unlocked">✅ Doodle Skin Unlocked!</p>';
+        content.innerHTML = '<h3>✅ Doodle Skin Unlocked!</h3><img src="doodle.png" style="width:200px; border:5px solid #FFDA37; border-radius:20px;">';
       } else {
-        const savedProgress = localStorage.getItem('washProgress') || "0";
-        content.innerHTML = '<p class="skin-locked">❌ No skins unlocked.</p><p>Reach 100,000% in Wash To Eat to get the Doodle Skin!</p><p>Current progress: <span id="skinProgress">' + parseInt(savedProgress).toLocaleString() + '</span>%</p>';
+        let prog = localStorage.getItem('washProgress') || "0";
+        content.innerHTML = `<h3>❌ Locked</h3><p>Reach 100,000% in Wash To Eat!<br>Current: ${parseInt(prog).toLocaleString()}%</p>`;
       }
       document.getElementById('skinModal').style.display = 'flex';
     }
@@ -188,32 +208,19 @@ header.style.color = "black";
       updateMainColin();
     }
 
-    function loadWashGameProgress() {
-      cleanProgress = parseInt(localStorage.getItem('washProgress') || '0');
-      document.getElementById('percentDisp').innerText = cleanProgress.toLocaleString() + "%";
-    }
-
-    function saveWashGameProgress() {
-      localStorage.setItem('washProgress', cleanProgress.toString());
-    }
-
+    // --- WASH GAME LOOP ---
     const soapEl = document.getElementById('soap');
-    const startWash = (e) => { e.preventDefault(); isHolding = true; };
-    const stopWash = () => { isHolding = false; };
-    
-    soapEl.onmousedown = startWash; soapEl.onmouseup = stopWash; soapEl.onmouseleave = stopWash;
-    soapEl.ontouchstart = startWash; soapEl.ontouchend = stopWash;
+    soapEl.onmousedown = soapEl.ontouchstart = (e) => { e.preventDefault(); isHolding = true; };
+    window.onmouseup = window.ontouchend = () => { isHolding = false; };
 
     setInterval(() => {
       if (isHolding && cleanProgress < 100000) {
         cleanProgress += currentPower;
-        if (cleanProgress > 100000) cleanProgress = 100000;
-        document.getElementById('percentDisp').innerText = cleanProgress.toLocaleString() + "%";
-        saveWashGameProgress();
-        
+        document.getElementById('percentDisp').innerText = Math.min(100000, cleanProgress).toLocaleString() + "%";
+        localStorage.setItem('washProgress', cleanProgress);
         if (cleanProgress >= 100000 && localStorage.getItem('doodleSkin') !== 'true') {
           localStorage.setItem('doodleSkin', 'true');
-          alert("🎉 CONGRATULATIONS! DOODLE SKIN UNLOCKED! 🎉");
+          alert("🎉 DOODLE SKIN UNLOCKED!");
         }
       }
     }, 50);
@@ -223,60 +230,13 @@ header.style.color = "black";
       if(document.getElementById('moneyDisp')) document.getElementById('moneyDisp').innerText = money; 
     }, 1000);
 
-    function buyItem(name, cost, powerAdd) {
-      if (money >= cost) { 
-        money -= cost; 
-        basePower += powerAdd; 
-        currentPower = boostActive ? basePower * 2 : basePower; 
-        document.getElementById('moneyDisp').innerText = money; 
-      } else { alert("Need more money! 💸"); }
+    function buyItem(n, c, p) {
+      if (money >= c) { money -= c; basePower += p; currentPower = basePower; }
+      else alert("Not enough money!");
     }
 
-    // --- CUSTOM GAMES ---
-    window.saveNewGame = function() {
-      const name = document.getElementById('customGameName').value;
-      const code = document.getElementById('customGameCode').value;
-      const file = document.getElementById('customGameIcon').files[0];
-      if (!name || !code || !file) return alert("Fill all fields!");
-
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
-        games.push({ id: Date.now(), name, code, icon: e.target.result });
-        localStorage.setItem('myCustomGames', JSON.stringify(games));
-        location.reload();
-      };
-      reader.readAsDataURL(file);
-    };
-
-    function loadCustomGames() {
-      const games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
-      const container = document.getElementById('mainContainer');
-      games.forEach(game => {
-        const card = document.createElement('div');
-        card.className = 'game-card';
-        card.innerHTML = `<img src="${game.icon}"><p>${game.name}</p><button class="delete-game-btn" onclick="event.stopPropagation(); deleteGame(${game.id})">✕</button>`;
-        card.onclick = () => playCustomGame(game.id);
-        container.appendChild(card);
-      });
-    }
-
-    window.deleteGame = (id) => {
-      if (confirm("Delete?")) {
-        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
-        localStorage.setItem('myCustomGames', JSON.stringify(games.filter(g => g.id !== id)));
-        location.reload();
-      }
-    };
-
-    function playCustomGame(id) {
-      const game = JSON.parse(localStorage.getItem('myCustomGames')).find(g => g.id === id);
-      document.getElementById('playCustomModal').style.display = 'flex';
-      const doc = document.getElementById('gameRunner').contentWindow.document;
-      doc.open(); doc.write(game.code); doc.close();
-    }
-
-function openMixGuy() {
+    // --- MIX GUY (FULLSCREEN OPTIMIZED) ---
+    function openMixGuy() {
   const mixGuyCode = `<!DOCTYPE html>
 <html>
 <head>
@@ -481,7 +441,7 @@ right: 240px;
     <\/script>
 </body>
 </html>`;
-
+  
   document.getElementById('playCustomModal').style.display = 'flex';
   var runner = document.getElementById('gameRunner');
   var doc = runner.contentWindow.document;
@@ -490,75 +450,72 @@ right: 240px;
   doc.close();
 }
 
+    // --- CUSTOM GAMES ---
+    window.saveNewGame = () => {
+      const name = document.getElementById('customGameName').value;
+      const code = document.getElementById('customGameCode').value;
+      const file = document.getElementById('customGameIcon').files[0];
+      if (!name || !code || !file) return alert("Fill all fields!");
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
+        games.push({ id: Date.now(), name, code, icon: e.target.result });
+        localStorage.setItem('myCustomGames', JSON.stringify(games));
+        location.reload();
+      };
+      reader.readAsDataURL(file);
+    };
 
-    
+    function loadCustomGames() {
+      const games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
+      const container = document.getElementById('mainContainer');
+      games.forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.innerHTML = `<img src="${game.icon}"><p>${game.name}</p><button class="delete-game-btn" onclick="event.stopPropagation(); deleteGame(${game.id})">✕</button>`;
+        card.onclick = () => {
+          document.getElementById('playCustomModal').style.display = 'flex';
+          let doc = document.getElementById('gameRunner').contentWindow.document;
+          doc.open(); doc.write(game.code); doc.close();
+        };
+        container.appendChild(card);
+      });
+    }
 
-  <script>
-    // Gunakan huruf kecil 'const'
+    window.deleteGame = (id) => {
+      if (confirm("Delete?")) {
+        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
+        localStorage.setItem('myCustomGames', JSON.stringify(games.filter(g => g.id !== id)));
+        location.reload();
+      }
+    };
+
+    // --- DAILY REWARD ---
     const COOLDOWN = 24 * 60 * 60 * 1000;
-
-    function updateDailyTimer() {
+    setInterval(() => {
       const last = localStorage.getItem('lastDailyClaim');
       const display = document.getElementById('TIMES');
-      
-      // Safety check jika elemen tidak ditemukan di HTML
-      if (!display) return;
-
-      if (!last) {
-        display.innerText = "READY!";
-        return;
-      }
-
+      if (!last) return display.innerText = "READY!";
       const left = (parseInt(last) + COOLDOWN) - Date.now();
-
-      if (left <= 0) {
-        display.innerText = "READY!";
-      } else {
-        const h = Math.floor(left / 3600000);
-        const m = Math.floor((left % 3600000) / 60000);
-        const s = Math.floor((left % 60000) / 1000);
+      if (left <= 0) display.innerText = "READY!";
+      else {
+        const h = Math.floor(left/3600000), m = Math.floor((left%3600000)/60000), s = Math.floor((left%60000)/1000);
         display.innerText = `${h}h ${m}m ${s}s`;
       }
-    }
-
-    // Fungsi placeholder agar tidak error saat dipanggil
-    function updateMainColin() {
-      const display = document.getElementById('colinCount'); // Sesuaikan ID-nya
-      if (display) {
-        display.innerText = localStorage.getItem('mixGuyColin') || '0';
-      }
-    }
+    }, 1000);
 
     document.getElementById('dailybut').onclick = () => {
       const last = localStorage.getItem('lastDailyClaim');
-      const now = Date.now();
-
-      if (!last || now > (parseInt(last) + COOLDOWN)) {
-        let c = parseInt(localStorage.getItem('mixGuyColin') || '0') + 300;
-        localStorage.setItem('mixGuyColin', c);
-        localStorage.setItem('lastDailyClaim', now);
-        
+      if (!last || Date.now() > (parseInt(last) + COOLDOWN)) {
+        localStorage.setItem('mixGuyColin', parseInt(localStorage.getItem('mixGuyColin')||'0') + 300);
+        localStorage.setItem('lastDailyClaim', Date.now());
         updateMainColin();
-        updateDailyTimer(); // Langsung update tampilan timer
         alert("🎁 +300 Colin!");
-      } else {
-        alert("Wait for cooldown!");
-      }
+      } else alert("Wait!");
     };
 
-    window.onload = () => {
-      updateMainColin();
-      // Pastikan fungsi loadCustomGames ada di bagian lain kodemu
-      if (typeof loadCustomGames === "function") loadCustomGames(); 
-      
-      updateDailyTimer(); // Jalankan sekali saat load
-      setInterval(updateDailyTimer, 1000);
-    };
-
-    document.getElementById('storebut').onclick = () => {
-      const modal = document.getElementById('storeModal');
-      if (modal) modal.style.display = 'flex';
-    };
-</script>
+    window.onload = () => { updateMainColin(); loadCustomGames(); };
+    document.getElementById('storebut').onclick = () => document.getElementById('storeModal').style.display = 'flex';
+  </script>
 </body>
 </html>
