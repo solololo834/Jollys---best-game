@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Jollys - best game</title>
+  <style>
+    body { font-family: 'Arial', sans-serif; background: #fdfdfd; margin: 0; text-align: center; color: #333; overflow-x: hidden; }
+    #header { width: 100%; height: 80px; background-color: #FFDA37; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: bold; border-bottom: 5px solid #333; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    #profileArea { padding: 30px; position: relative; }
+    #pfp { height: 120px; border-radius: 50%; border: 6px solid #FFDA37; background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: cover; }
+    #colinDisplay { background: #fff; border: 3px solid #333; display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-top: 10px; font-size: 18px; color: #b8860b; }
+    #skinButton { position: relative; right: 80px; cursor: pointer; background: none; border: none; transition: 0.3s; vertical-align: middle; margin-left: 10px; width: 100px; height: 100px; }
+    #skinButton:hover { transform: scale(1.1) rotate(5deg); }
+    .game-container { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; padding: 20px; }
+    .game-card { width: 150px; cursor: pointer; transition: 0.3s; position: relative; }
+    .game-card:hover { transform: translateY(-8px); }
+    .game-card img { width: 130px; height: 130px; border-radius: 25px; border: 4px solid #333; background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); object-fit: cover; }
+    .game-card p { font-weight: bold; font-size: 13px; margin-top: 15px; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.2; }
+    .icon-placeholder { width: 130px; height: 130px; border-radius: 25px; border: 4px dashed #333; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 50px; margin: 0 auto; }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px); }
+    .modal-content { background: white; padding: 10px; border-radius: 30px; width: 50%; max-width: 450px; position: relative; border: 6px solid #FFDA37; box-shadow: 0 25px 50px rgba(0,0,0,0.5); max-height: 85vh; overflow-y: auto; }
+    label { display: block; text-align: left; font-weight: bold; margin-top: 15px; font-size: 14px; }
+    input[type="text"], input[type="file"], textarea { width: 100%; padding: 12px; margin-top: 5px; border-radius: 12px; border: 3px solid #eee; box-sizing: border-box; font-family: inherit; }
+    textarea { font-family: monospace; height: 120px; resize: none; }
+    .btn-save { width: 100%; padding: 15px; background: #FFDA37; border: 4px solid #333; font-weight: bold; border-radius: 15px; cursor: pointer; margin-top: 20px; font-size: 16px; }
+    .close-btn { position: absolute; top: 10px; right: 10px; cursor: pointer; background: #ff4444; color: white; border: 3px solid #333; border-radius: 50%; width: 35px; height: 35px; font-weight: bold; z-index: 10; }
+    #gameArea { background: #aeefff; border-color: #7ed2e8; }
+    #soap { font-size: 110px; cursor: pointer; user-select: none; display: inline-block; margin: 25px; transition: 0.1s; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
+    #soap:active { transform: scale(1.25) rotate(10deg); }
+    .stats-box { background: rgba(255,255,255,0.7); padding: 15px; border-radius: 20px; border: 2px solid #333; margin-bottom: 20px; font-size: 18px; font-weight: bold; }
+    .shop-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .btn-buy { background: #fff; border: 3px solid #333; padding: 12px; cursor: pointer; font-weight: bold; border-radius: 15px; font-size: 14px; transition: 0.2s; }
+    .btn-buy:hover { background: #FFDA37; }
+    #boostStatus { color: #ff0000; font-weight: bold; font-size: 20px; margin-bottom: 15px; display: none; text-shadow: 1px 1px 0 #fff; animation: blink 1s infinite; }
+    @keyframes blink { 50% { opacity: 0.7; } }
+    
+    #storebut { position: relative; width: 150px; height: 150px; bottom: 150px; left: 150px; cursor: pointer; }
+    #dailybut { position: relative; width: 170px; height: 170px; bottom: -20px; left: -70px; cursor: pointer; }
+    #TIMES { position: relative; bottom: 75px; background-color: white; padding: 5px; border-radius: 10px; display: inline-block; }
+
+    .store-layout { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; min-height: 200px; }
+    .delete-game-btn { position: absolute; top: -5px; right: -5px; background: red; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; font-size: 14px; cursor: pointer; font-weight: bold; z-index: 10; display: flex; align-items: center; justify-content: center; }
+    .skin-unlocked { color: green; font-weight: bold; font-size: 18px; margin-top: 15px; }
+    .skin-locked { color: red; font-weight: bold; }
+    
+    #setting { position: relative; bottom: 100px; right: 150px; cursor: pointer; }
+    #setcon { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
+    #space { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; object-fit: cover; display: none; }
+    .space-active { background: #000 !important; color: #fff !important; }
+  </style>
+</head>
+
+<body id="body">
+  <div id="setcon">
+    <h2>SETTINGS</h2>
+    <button type="button" id="spacon" class="btn-save" style="width: 200px;">TOGGLE SPACE MODE</button>
+    <button type="button" class="btn-save" style="width: 200px; background: #ff4444;" onclick="document.getElementById('setcon').style.display='none'">CLOSE</button>
+  </div>
+
+  <img src="space.png" id="space" alt="space background" />
+  
+  <div id="header">JOLLYS</div>
+  <h1 id="setting">⚙️</h1>
+
+  <div id="profileArea">
+    <img src="beni.png" id="pfp" alt="profile" onerror="this.src='https://via.placeholder.com/120/eee/333?text=USER'"/>
+    <h2>USER</h2>
+    <div id="colinDisplay">🪙 <span id="mainColinCount">0</span> Colin</div>
+    <br>
+    <img src="customise.jpg" id="skinButton" onclick="openSkinModal()" alt="skins">
+  </div>
+
+  <img src="store.png" id="storebut" alt="store" />
+  <img src="dailyr.png" id="dailybut" alt="daily" />
+  <h2 id="TIMES">TEST</h2>
+
+  <h1>______________</h1>
+  <h2>GAMES</h2>
+
+  <div class="game-container" id="mainContainer">
+    <div class="game-card" onclick="window.location.href='https://solololo834.github.io/JOLLYS-Meowl-slayer/'">
+      <img src="game1.jpg" onerror="this.src='https://via.placeholder.com/130?text=MEOWL'">
+      <p>MEOWL SLAYER</p>
+    </div>
+
+    <div class="game-card" onclick="openWashGame()">
+      <img src="game2.png" onerror="this.src='https://via.placeholder.com/130?text=WASH'">
+      <p>{FREE SKIN👾}<br>WASH TO EAT</p>
+    </div>
+
+    <div class="game-card" onclick="openMixGuy()">
+      <img src="game3.png" onerror="this.src='https://via.placeholder.com/130?text=MIX+GUY'">
+      <p>MIX GUY</p>
+    </div>
+
+    <div class="game-card" onclick="openCreator()">
+      <div class="icon-placeholder">＋</div>
+      <p>CREATE GAME</p>
+    </div>
+  </div>
+
+  <div id="storeModal" class="modal-overlay"><div class="modal-content"><button class="close-btn" onclick="closeModals()">X</button><h2>🛒IJOLLYSHOP</h2><div class="store-layout"><p>No games or skins available yet...</p></div></div></div>
+  <div id="skinModal" class="modal-overlay"><div class="modal-content"><button class="close-btn" onclick="closeModals()">X</button><h2>🎨 SKIN COLLECTION</h2><div id="skinContent"></div></div></div>
+  <div id="gameModal" class="modal-overlay">
+    <div class="modal-content" id="gameArea">
+      <button class="close-btn" onclick="closeModals()">X</button>
+      <h2>🧼 Wash To Eat</h2>
+      <div id="boostStatus">🔥 2X BOOST ACTIVE! 🔥</div>
+      <div class="stats-box">Money: <span id="moneyDisp">0</span> 💰 | Clean: <span id="percentDisp">0%</span></div>
+      <div id="soap">🧼</div>
+      <div class="shop-container">
+        <button class="btn-buy" onclick="buyItem('Sponge', 20, 2)">🧽 Sponge 20</button>
+        <button class="btn-buy" onclick="buyItem('Water', 50, 5)">🚿 Water 50</button>
+        <button class="btn-buy" onclick="buyItem('Soap', 100, 12)">🧴 Soap 100</button>
+        <button class="btn-buy" onclick="buyItem('Bucket', 200, 35)">🪣 Bucket 200</button>
+      </div>
+      <div id="chicken" style="display:none; font-size: 40px; margin-top: 15px;">🍗 YUM! SKIN UNLOCKED!</div>
+    </div>
+  </div>
+  <div id="creatorModal" class="modal-overlay"><div class="modal-content"><button class="close-btn" onclick="closeModals()">X</button><h2>⚒️ GAME CREATOR</h2><input type="text" id="customGameName" placeholder="Game Name"><input type="file" id="customGameIcon" accept="image/*"><textarea id="customGameCode" placeholder="Paste HTML code here..."></textarea><button class="btn-save" onclick="saveNewGame()">💾 SAVE GAME</button></div></div>
+  <div id="playCustomModal" class="modal-overlay"><div class="modal-content" style="max-width: 90%; width: 90%; height: 80vh;"><button class="close-btn" onclick="closeModals()">X</button><iframe id="gameRunner" style="width: 100%; height: 100%; border: none;"></iframe></div></div>
+
+  <script>
+    // --- SETTINGS LOGIC ---
+    let setting = document.getElementById("setting");
+    let setcon = document.getElementById("setcon");
+    let spacon = document.getElementById("spacon");
+    let spaceImg = document.getElementById("space");
+
+    setting.onclick = function(){
+      setcon.style.display = "flex";
+    }
+    
+    spacon.onclick = function() {
+      if(spaceImg.style.display === "block") {
+        spaceImg.style.display = "none";
+        document.body.classList.remove("space-active");
+      } else {
+        spaceImg.style.display = "block";
+        document.body.classList.add("space-active");
+header.style.background = "linear-gradient(135deg, #E262BC, #003DD8)";
+header.style.color = "black"; 
+
+      }
+    }
+
+    // --- GAME LOGIC ---
+    let money = 0;
+    let cleanProgress = 0;
+    let basePower = 1;
+    let currentPower = 1;
+    let isHolding = false;
+    let boostActive = false;
+    
+    if (localStorage.getItem('doodleSkin') === null) localStorage.setItem('doodleSkin', 'false');
+    if (localStorage.getItem('mixGuyColin') === null) localStorage.setItem('mixGuyColin', '0');
+
+    function updateMainColin() {
+      document.getElementById('mainColinCount').innerText = localStorage.getItem('mixGuyColin') || '0';
+    }
+
+    function openWashGame() { 
+      loadWashGameProgress();
+      document.getElementById('gameModal').style.display = 'flex'; 
+    }
+    
+    function openCreator() { 
+      document.getElementById('creatorModal').style.display = 'flex'; 
+    }
+    
+    function openSkinModal() {
+      const content = document.getElementById('skinContent');
+      const isUnlocked = localStorage.getItem('doodleSkin') === 'true';
+      
+      if (isUnlocked) {
+        content.innerHTML = '<img src="doodle.png" style="width:140px; border:4px solid #FFDA37; border-radius:20px; background:white; padding:10px;" onerror="this.src=\'https://via.placeholder.com/140?text=DOODLE\'"><p class="skin-unlocked">✅ Doodle Skin Unlocked!</p>';
+      } else {
+        const savedProgress = localStorage.getItem('washProgress') || "0";
+        content.innerHTML = '<p class="skin-locked">❌ No skins unlocked.</p><p>Reach 100,000% in Wash To Eat to get the Doodle Skin!</p><p>Current progress: <span id="skinProgress">' + parseInt(savedProgress).toLocaleString() + '</span>%</p>';
+      }
+      document.getElementById('skinModal').style.display = 'flex';
+    }
+
+    function closeModals() { 
+      document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
+      document.getElementById('gameRunner').src = "about:blank";
+      updateMainColin();
+    }
+
+    function loadWashGameProgress() {
+      cleanProgress = parseInt(localStorage.getItem('washProgress') || '0');
+      document.getElementById('percentDisp').innerText = cleanProgress.toLocaleString() + "%";
+    }
+
+    function saveWashGameProgress() {
+      localStorage.setItem('washProgress', cleanProgress.toString());
+    }
+
+    const soapEl = document.getElementById('soap');
+    const startWash = (e) => { e.preventDefault(); isHolding = true; };
+    const stopWash = () => { isHolding = false; };
+    
+    soapEl.onmousedown = startWash; soapEl.onmouseup = stopWash; soapEl.onmouseleave = stopWash;
+    soapEl.ontouchstart = startWash; soapEl.ontouchend = stopWash;
+
+    setInterval(() => {
+      if (isHolding && cleanProgress < 100000) {
+        cleanProgress += currentPower;
+        if (cleanProgress > 100000) cleanProgress = 100000;
+        document.getElementById('percentDisp').innerText = cleanProgress.toLocaleString() + "%";
+        saveWashGameProgress();
+        
+        if (cleanProgress >= 100000 && localStorage.getItem('doodleSkin') !== 'true') {
+          localStorage.setItem('doodleSkin', 'true');
+          alert("🎉 CONGRATULATIONS! DOODLE SKIN UNLOCKED! 🎉");
+        }
+      }
+    }, 50);
+
+    setInterval(() => { 
+      money += 5; 
+      if(document.getElementById('moneyDisp')) document.getElementById('moneyDisp').innerText = money; 
+    }, 1000);
+
+    function buyItem(name, cost, powerAdd) {
+      if (money >= cost) { 
+        money -= cost; 
+        basePower += powerAdd; 
+        currentPower = boostActive ? basePower * 2 : basePower; 
+        document.getElementById('moneyDisp').innerText = money; 
+      } else { alert("Need more money! 💸"); }
+    }
+
+    // --- CUSTOM GAMES ---
+    window.saveNewGame = function() {
+      const name = document.getElementById('customGameName').value;
+      const code = document.getElementById('customGameCode').value;
+      const file = document.getElementById('customGameIcon').files[0];
+      if (!name || !code || !file) return alert("Fill all fields!");
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
+        games.push({ id: Date.now(), name, code, icon: e.target.result });
+        localStorage.setItem('myCustomGames', JSON.stringify(games));
+        location.reload();
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function loadCustomGames() {
+      const games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
+      const container = document.getElementById('mainContainer');
+      games.forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.innerHTML = `<img src="${game.icon}"><p>${game.name}</p><button class="delete-game-btn" onclick="event.stopPropagation(); deleteGame(${game.id})">✕</button>`;
+        card.onclick = () => playCustomGame(game.id);
+        container.appendChild(card);
+      });
+    }
+
+    window.deleteGame = (id) => {
+      if (confirm("Delete?")) {
+        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
+        localStorage.setItem('myCustomGames', JSON.stringify(games.filter(g => g.id !== id)));
+        location.reload();
+      }
+    };
+
+    function playCustomGame(id) {
+      const game = JSON.parse(localStorage.getItem('myCustomGames')).find(g => g.id === id);
+      document.getElementById('playCustomModal').style.display = 'flex';
+      const doc = document.getElementById('gameRunner').contentWindow.document;
+      doc.open(); doc.write(game.code); doc.close();
+    }
+
+function openMixGuy() {
+  const mixGuyCode = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+        body { background: #1a3b1a; min-height: 100vh; overflow: hidden; font-family: sans-serif; }
+        #world { position: absolute; width: 2000px; height: 2000px; background-color: #1a3b1a; transition: transform 0.1s; }
+        #fli { position: absolute; width: 80px; height: 80px; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 100; pointer-events: none; }
+        .score { position: fixed; top: 15px; right: 15px; background: rgba(0,0,0,0.8); padding: 10px; border: 2px solid gold; color: gold; z-index: 1000; border-radius: 15px; font-weight: bold; }
+        .actions { position: fixed; top: 75px; right: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
+        .action-btn { background: #f0c05e; border: none; padding: 12px; border-radius: 10px; font-weight: bold; border-bottom: 4px solid #9e762f; cursor: pointer; }
+        .inventory-container { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; text-align: center; width: 100%; max-width: 300px; }
+        .inventory { background: #2f542f; padding: 10px; display: flex; justify-content: center; gap: 10px; border: 2px solid #ebc76e; border-radius: 15px; }
+        .slot { width: 50px; height: 50px; background: #352b18; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border-radius: 8px; border: 1px solid #5d4a2a; }
+        .pickup-btn { background: #4CAF50; color: white; border: none; padding: 12px 40px; border-radius: 25px; margin-bottom: 10px; font-weight: bold; box-shadow: 0 4px #2e6b31; cursor: pointer; }
+        .controls { position: fixed; bottom: 20px; right: 20px; display: grid; grid-template-columns: repeat(3, 55px); gap: 8px; z-index: 1000; }
+        .ctrl { width: 55px; height: 55px; background: #e7c58b; border: 2px solid #8f6a2b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; cursor: pointer; box-shadow: 0 3px #8f6a2b; }
+        .ctrl:active { transform: translateY(2px); box-shadow: none; }
+        .item { position: absolute; font-size: 2.5rem; transform: translate(-50%, -50%); transition: opacity 0.3s; }
+        .tree { position: absolute; font-size: 4rem; opacity: 0.8; pointer-events: none; }
+        #reciped {
+          position: relative;
+          bottom: 70px;
+         right: 500px;
+        }
+        #mixd {
+          position: relative;
+bottom: 123px;
+right: 350px;
+        }
+        
+        #pickd {
+          position: relative;
+bottom: -70px;
+right: 240px;
+        }
+    </style>
+</head>
+<body>
+    <div id="world"><div id="trees"></div><div id="items"></div></div>
+    <img src="scb.png" id="fli" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Mix'">
+    
+    <div class="score" id="score">🪙 0 Colin</div>
+    
+    <div class="actions">
+        <button class="action-btn" onclick="showRecipes()" id=reciped>📖 RECIPES</button>
+        <button class="action-btn" onclick="craft()" id="mixd"style="background:#ff9800; border-bottom-color: #c67600;">🧪 MIX</button>
+    </div>
+
+    <div class="inventory-container">
+        <button class="pickup-btn"  id="pickd"onclick="pickup()">✋ PICKUP</button>
+        <div class="inventory" id="inventory-ui">
+            <div class="slot">⚫</div><div class="slot">⚫</div><div class="slot">⚫</div><div class="slot">⚫</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div style="grid-column:2" class="ctrl" onclick="move(0,-60)">↑</div>
+        <div style="grid-column:1" class="ctrl" onclick="move(-60,0)">←</div>
+        <div style="grid-column:2" class="ctrl" onclick="move(0,60)">↓</div>
+        <div style="grid-column:3" class="ctrl" onclick="move(60,0)">→</div>
+    </div>
+
+    <script>
+        var player = { x: 1000, y: 1000 };
+        var inventory = [null, null, null, null];
+        var colinBalance = parseInt(localStorage.getItem('mixGuyColin') || '0');
+        var rawItems = ['🍌', '🍎', '🥚', '🍯', '🔥', '💧', '🐟', '🧂'];
+        var activeItems = [];
+
+        var recipes = {
+            '🍎🍯': { res: '🍏', val: 15 }, '🥚🔥': { res: '🍳', val: 10 }, '🍌💧': { res: '🥤', val: 12 },
+            '🐟🔥': { res: '🍗', val: 20 }, '🐟🧂': { res: '🍱', val: 25 }, '🍎🔥': { res: '🥧', val: 18 },
+            '🥚💧': { res: '🍜', val: 22 }, '🍯💧': { res: '🍺', val: 15 }, '🧂💧': { res: '🌊', val: 5 }
+        };
+
+        function init() {
+            document.getElementById('score').innerText = '🪙 ' + colinBalance + ' Colin';
+            var treeDiv = document.getElementById('trees');
+            for(var i=0; i<40; i++) {
+                var t = document.createElement('div'); t.className = 'tree'; t.innerText = '🌳';
+                t.style.left = (Math.random() * 1900) + 'px'; t.style.top = (Math.random() * 1900) + 'px';
+                treeDiv.appendChild(t);
+            }
+            spawnItems(30);
+            updateCamera();
+            updateUI();
+        }
+
+        function spawnItems(n) {
+            for(var i=0; i<n; i++) {
+                activeItems.push({
+                    emoji: rawItems[Math.floor(Math.random() * rawItems.length)],
+                    x: Math.random() * 1800 + 100, y: Math.random() * 1800 + 100, collected: false
+                });
+            }
+            renderItems();
+        }
+
+        function renderItems() {
+            var container = document.getElementById('items');
+            container.innerHTML = '';
+            activeItems.forEach(function(item) {
+                if(!item.collected) {
+                    var d = document.createElement('div'); d.className = 'item'; d.innerText = item.emoji;
+                    d.style.left = item.x + 'px'; d.style.top = item.y + 'px';
+                    container.appendChild(d);
+                }
+            });
+        }
+
+        window.move = function(dx, dy) {
+            player.x = Math.max(0, Math.min(2000, player.x + dx));
+            player.y = Math.max(0, Math.min(2000, player.y + dy));
+            updateCamera();
+        };
+
+        function updateCamera() {
+            var ox = (window.innerWidth / 2) - player.x;
+            var oy = (window.innerHeight / 2) - player.y;
+            document.getElementById('world').style.transform = "translate(" + ox + "px," + oy + "px)";
+        }
+
+        window.pickup = function() {
+            let pickedSomething = false;
+            activeItems.forEach(function(item) {
+                if(!item.collected && Math.hypot(player.x - item.x, player.y - item.y) < 80) {
+                    var emptyIdx = inventory.indexOf(null);
+                    if(emptyIdx !== -1) {
+                        inventory[emptyIdx] = item.emoji;
+                        item.collected = true;
+                        pickedSomething = true;
+                    }
+                }
+            });
+            if(pickedSomething) {
+                updateUI();
+                renderItems();
+                if(activeItems.filter(i => !i.collected).length < 5) spawnItems(15);
+            }
+        };
+
+        window.craft = function() {
+            // Find non-empty items
+            var filledIndices = [];
+            inventory.forEach((item, i) => { if(item !== null) filledIndices.push(i); });
+
+            if(filledIndices.length < 2) {
+                alert("Pick up at least 2 items first!");
+                return;
+            }
+
+            // Mix the first two available items
+            var i1 = filledIndices[0];
+            var i2 = filledIndices[1];
+            var itemA = inventory[i1];
+            var itemB = inventory[i2];
+
+            var result = recipes[itemA + itemB] || recipes[itemB + itemA];
+
+            if(result) {
+                // Remove ingredients
+                inventory[i1] = null;
+                inventory[i2] = null;
+                
+                // Add result to first empty slot
+                inventory[inventory.indexOf(null)] = result.res;
+
+                // Update balance
+                colinBalance += result.val;
+                localStorage.setItem('mixGuyColin', colinBalance);
+                document.getElementById('score').innerText = '🪙 ' + colinBalance + ' Colin';
+                
+                alert("Success! " + itemA + " + " + itemB + " = " + result.res + " (+ " + result.val + " Colin)");
+            } else {
+                alert("Mix failed! Those items don't go together.");
+            }
+            updateUI();
+        };
+
+        function updateUI() {
+            // Auto-sort: move everything to the left
+            var itemsOnly = inventory.filter(i => i !== null);
+            inventory = [null, null, null, null];
+            itemsOnly.forEach((item, i) => { if(i < 4) inventory[i] = item; });
+
+            var slots = document.querySelectorAll('.slot');
+            inventory.forEach(function(item, i) { 
+                slots[i].innerText = item || '⚫'; 
+            });
+        }
+
+        window.showRecipes = function() {
+            var m = "RECIPES:\\n";
+            for(var k in recipes) m += k + " = " + recipes[k].res + " (" + recipes[k].val + " Colin)\\n";
+            alert(m);
+        };
+
+        init();
+    <\/script>
+</body>
+</html>`;
+
+  document.getElementById('playCustomModal').style.display = 'flex';
+  var runner = document.getElementById('gameRunner');
+  var doc = runner.contentWindow.document;
+  doc.open();
+  doc.write(mixGuyCode);
+  doc.close();
+}
+
+
+    
+
+    // --- DAILY REWARD ---
+    const COOLDOWN = 24 * 60 * 60 * 1000;
+    function updateDailyTimer() {
+      const last = localStorage.getItem('lastDailyClaim');
+      const display = document.getElementById('TIMES');
+      if (!last) return display.innerText = "READY!";
+      const left = (parseInt(last) + COOLDOWN) - Date.now();
+      if (left <= 0) display.innerText = "READY!";
+      else {
+        const h = Math.floor(left/3600000), m = Math.floor((left%3600000)/60000), s = Math.floor((left%60000)/1000);
+        display.innerText = `${h}h ${m}m ${s}s`;
+      }
+    }
+
+    document.getElementById('dailybut').onclick = () => {
+      const last = localStorage.getItem('lastDailyClaim');
+      if (!last || Date.now() > (parseInt(last) + COOLDOWN)) {
+        let c = parseInt(localStorage.getItem('mixGuyColin') || '0') + 300;
+        localStorage.setItem('mixGuyColin', c);
+        localStorage.setItem('lastDailyClaim', Date.now());
+        updateMainColin();
+        alert("🎁 +300 Colin!");
+      } else alert("Wait for cooldown!");
+    };
+
+    window.onload = () => {
+      updateMainColin();
+      loadCustomGames();
+      setInterval(updateDailyTimer, 1000);
+    };
+
+    document.getElementById('storebut').onclick = () => document.getElementById('storeModal').style.display = 'flex';
+  </script>
+</body>
+</html>
