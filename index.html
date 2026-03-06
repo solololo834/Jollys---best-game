@@ -371,114 +371,115 @@ top: 30px;
       document.getElementById("header").style.background = "linear-gradient(135deg, #E262BC, #003DD8)";
     };
 
-   function openMixGuy() {
+   
+function openMixGuy() {
   const mixGuyCode = `<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mix Guy - Compact Edition</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
         body { background: #1a3b1a; min-height: 100vh; overflow: hidden; font-family: sans-serif; }
-        #world { position: absolute; width: 2000px; height: 2000px; background-color: #1a3b1a; transition: transform 0.1s; }
-        #fli { position: absolute; width: 80px; height: 80px; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 100; pointer-events: none; }
-        .score { position: fixed; top: 15px; right: 15px; background: rgba(0,0,0,0.8); padding: 10px; border: 2px solid gold; color: gold; z-index: 1000; border-radius: 15px; font-weight: bold; }
-        .actions { position: fixed; top: 75px; right: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
-        .action-btn { background: #f0c05e; border: none; padding: 12px; border-radius: 10px; font-weight: bold; border-bottom: 4px solid #9e762f; cursor: pointer; }
-        .inventory-container { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; text-align: center; width: 100%; max-width: 300px; }
-        .inventory { background: #2f542f; padding: 10px; display: flex; justify-content: center; gap: 10px; border: 2px solid #ebc76e; border-radius: 15px; }
-        .slot { width: 50px; height: 50px; background: #352b18; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border-radius: 8px; border: 1px solid #5d4a2a; }
-        .pickup-btn { background: #4CAF50; color: white; border: none; padding: 12px 40px; border-radius: 25px; margin-bottom: 10px; font-weight: bold; box-shadow: 0 4px #2e6b31; cursor: pointer; }
-        .controls { position: fixed; bottom: 20px; right: 20px; display: grid; grid-template-columns: repeat(3, 55px); gap: 8px; z-index: 1000; }
-        .ctrl { width: 55px; height: 55px; background: #e7c58b; border: 2px solid #8f6a2b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; cursor: pointer; box-shadow: 0 3px #8f6a2b; }
-        .ctrl:active { transform: translateY(2px); box-shadow: none; }
-        .item { position: absolute; font-size: 2.5rem; transform: translate(-50%, -50%); transition: opacity 0.3s; }
-        .tree { position: absolute; font-size: 4rem; opacity: 0.8; pointer-events: none; }
-        #reciped {
-          position: relative;
-          bottom: 70px;
-         right: 500px;
-        }
-        #mixd {
-          position: relative;
-bottom: 123px;
-right: 350px;
-        }
         
-        #pickd {
-          position: relative;
-bottom: -70px;
-right: 240px;
-        }
+        #world { position: absolute; width: 2000px; height: 2000px; background-color: #1a3b1a; transition: transform 0.1s ease-out; }
+        #player-sprite { position: absolute; width: 60px; height: 60px; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 100; pointer-events: none; }
+        
+        /* TOP HUD: Recipe, Clear, Mix */
+        .top-bar { position: fixed; top: 10px; left: 10px; right: 10px; display: flex; gap: 8px; z-index: 1000; }
+        .top-btn { flex: 1; padding: 10px; border: none; border-radius: 8px; font-weight: bold; font-size: 0.8rem; cursor: pointer; border-bottom: 3px solid rgba(0,0,0,0.2); color: white; }
+        .btn-recipe { background: #f0c05e; color: #352b18; }
+        .btn-clear { background: #f44336; }
+        .btn-mix { background: #ff9800; }
+        
+        /* SCORE */
+        .score-board { position: fixed; top: 60px; left: 10px; background: rgba(0,0,0,0.7); padding: 5px 15px; border: 1px solid gold; color: gold; z-index: 1000; border-radius: 20px; font-size: 0.9rem; }
+        
+        /* BOTTOM LEFT: Pickup Button */
+        .pickup-container { position: fixed; bottom: 30px; left: 20px; z-index: 1000; }
+        .pickup-btn { width: 80px; height: 80px; background: #4CAF50; color: white; border: none; border-radius: 50%; font-weight: bold; box-shadow: 0 5px #2e6b31; font-size: 0.9rem; cursor: pointer; }
+        .pickup-btn:active { transform: translateY(3px); box-shadow: none; }
+
+        /* BOTTOM CENTER: Compact Inventory */
+        .inventory-container { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 999; }
+        .inventory { background: rgba(47, 84, 47, 0.9); padding: 6px; display: flex; gap: 6px; border: 2px solid #ebc76e; border-radius: 12px; }
+        .slot { width: 45px; height: 45px; background: #352b18; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: 8px; border: 1px solid #5d4a2a; }
+
+        /* BOTTOM RIGHT: Controls */
+        .controls { position: fixed; bottom: 20px; right: 20px; display: grid; grid-template-columns: repeat(3, 50px); gap: 5px; z-index: 1000; }
+        .ctrl { width: 50px; height: 50px; background: rgba(231, 197, 139, 0.9); border: 1px solid #8f6a2b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; box-shadow: 0 3px #8f6a2b; }
+        
+        .item { position: absolute; font-size: 2rem; transform: translate(-50%, -50%); }
+        .tree { position: absolute; font-size: 4rem; opacity: 0.6; pointer-events: none; transform: translate(-50%, -50%); }
     </style>
 </head>
 <body>
     <div id="world"><div id="trees"></div><div id="items"></div></div>
-    <img src="scb.png" id="fli" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Mix'">
     
-    <div class="score" id="score">🪙 0 Colin</div>
-    
-    <div class="actions">
-        <button class="action-btn" onclick="showRecipes()" id=reciped>📖 RECIPES</button>
-        <button class="action-btn" onclick="craft()" id="mixd"style="background:#ff9800; border-bottom-color: #c67600;">🧪 MIX</button>
+    <img src="scb.png" id="player-sprite" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=MixGuy'">
+
+    <div class="top-bar">
+        <button class="top-btn btn-recipe" onclick="showRecipes()">RECIPES📔</button>
+        <button class="top-btn btn-clear" onclick="resetInventory()">CLEAR🗑️</button>
+        <button class="top-btn btn-mix" onclick="craft()">MIX🌀</button>
+    </div>
+
+    <div class="score-board" id="score">🪙 0</div>
+
+    <div class="pickup-container">
+        <button class="pickup-btn" onclick="pickup()">✋<br>PICKUP</button>
     </div>
 
     <div class="inventory-container">
-        <button class="pickup-btn"  id="pickd"onclick="pickup()">✋ PICKUP</button>
-        <div class="inventory" id="inventory-ui">
+        <div class="inventory">
             <div class="slot">⚫</div><div class="slot">⚫</div><div class="slot">⚫</div><div class="slot">⚫</div>
         </div>
     </div>
 
     <div class="controls">
-        <div style="grid-column:2" class="ctrl" onclick="move(0,-60)">↑</div>
-        <div style="grid-column:1" class="ctrl" onclick="move(-60,0)">←</div>
-        <div style="grid-column:2" class="ctrl" onclick="move(0,60)">↓</div>
-        <div style="grid-column:3" class="ctrl" onclick="move(60,0)">→</div>
+        <div style="grid-column:2" class="ctrl" onclick="move(0,-80)">↑</div>
+        <div style="grid-column:1" class="ctrl" onclick="move(-80,0)">←</div>
+        <div style="grid-column:2" class="ctrl" onclick="move(0,80)">↓</div>
+        <div style="grid-column:3" class="ctrl" onclick="move(80,0)">→</div>
     </div>
 
     <script>
-        var player = { x: 1000, y: 1000 };
-        var inventory = [null, null, null, null];
-        var colinBalance = parseInt(localStorage.getItem('mixGuyColin') || '0');
-        var rawItems = ['🍌', '🍎', '🥚', '🍯', '🔥', '💧', '🐟', '🧂'];
-        var activeItems = [];
-
-        var recipes = {
-            '🍎🍯': { res: '🍏', val: 15 }, '🥚🔥': { res: '🍳', val: 10 }, '🍌💧': { res: '🥤', val: 12 },
-            '🐟🔥': { res: '🍗', val: 20 }, '🐟🧂': { res: '🍱', val: 25 }, '🍎🔥': { res: '🥧', val: 18 },
+        const player = { x: 1000, y: 1000 };
+        let inventory = [null, null, null, null];
+        let colinBalance = parseInt(localStorage.getItem('mixGuyColin') || '0');
+        const rawItems = ['🍌', '🍎', '🥚', '🍯', '🔥', '💧', '🐟', '🧂'];
+        let activeItems = [];
+        const recipes = {
+            '🍎🍯': { res: '🍏', val: 15 }, '🥚🔥': { res: '🍳', val: 10 },
+            '🍌💧': { res: '🥤', val: 12 }, '🐟🔥': { res: '🍗', val: 20 },
+            '🐟🧂': { res: '🍱', val: 25 }, '🍎🔥': { res: '🥧', val: 18 },
             '🥚💧': { res: '🍜', val: 22 }, '🍯💧': { res: '🍺', val: 15 }, '🧂💧': { res: '🌊', val: 5 }
         };
 
         function init() {
-            document.getElementById('score').innerText = '🪙 ' + colinBalance + ' Colin';
-            var treeDiv = document.getElementById('trees');
-            for(var i=0; i<40; i++) {
-                var t = document.createElement('div'); t.className = 'tree'; t.innerText = '🌳';
-                t.style.left = (Math.random() * 1900) + 'px'; t.style.top = (Math.random() * 1900) + 'px';
+            document.getElementById('score').innerText = "🪙 " + colinBalance;
+            const treeDiv = document.getElementById('trees');
+            for(let i=0; i<35; i++) {
+                const t = document.createElement('div'); t.className = 'tree'; t.innerText = '🌳';
+                t.style.left = (Math.random() * 1900 + 50) + 'px'; t.style.top = (Math.random() * 1900 + 50) + 'px';
                 treeDiv.appendChild(t);
             }
-            spawnItems(30);
-            updateCamera();
-            updateUI();
+            spawnItems(25); updateCamera(); updateInventoryUI();
         }
 
-        function spawnItems(n) {
-            for(var i=0; i<n; i++) {
-                activeItems.push({
-                    emoji: rawItems[Math.floor(Math.random() * rawItems.length)],
-                    x: Math.random() * 1800 + 100, y: Math.random() * 1800 + 100, collected: false
-                });
+        function spawnItems(count) {
+            for(let i=0; i<count; i++) {
+                activeItems.push({ emoji: rawItems[Math.floor(Math.random() * rawItems.length)], x: Math.random() * 1800 + 100, y: Math.random() * 1800 + 100, collected: false });
             }
-            renderItems();
+            renderWorldItems();
         }
 
-        function renderItems() {
-            var container = document.getElementById('items');
-            container.innerHTML = '';
-            activeItems.forEach(function(item) {
+        function renderWorldItems() {
+            const container = document.getElementById('items'); container.innerHTML = '';
+            activeItems.forEach(item => {
                 if(!item.collected) {
-                    var d = document.createElement('div'); d.className = 'item'; d.innerText = item.emoji;
+                    const d = document.createElement('div'); d.className = 'item'; d.innerText = item.emoji;
                     d.style.left = item.x + 'px'; d.style.top = item.y + 'px';
                     container.appendChild(d);
                 }
@@ -486,96 +487,69 @@ right: 240px;
         }
 
         window.move = function(dx, dy) {
-            player.x = Math.max(0, Math.min(2000, player.x + dx));
-            player.y = Math.max(0, Math.min(2000, player.y + dy));
+            player.x = Math.max(50, Math.min(1950, player.x + dx));
+            player.y = Math.max(50, Math.min(1950, player.y + dy));
             updateCamera();
         };
 
         function updateCamera() {
-            var ox = (window.innerWidth / 2) - player.x;
-            var oy = (window.innerHeight / 2) - player.y;
+            const ox = (window.innerWidth / 2) - player.x;
+            const oy = (window.innerHeight / 2) - player.y;
             document.getElementById('world').style.transform = "translate(" + ox + "px," + oy + "px)";
         }
 
         window.pickup = function() {
-            let pickedSomething = false;
-            activeItems.forEach(function(item) {
-                if(!item.collected && Math.hypot(player.x - item.x, player.y - item.y) < 80) {
-                    var emptyIdx = inventory.indexOf(null);
-                    if(emptyIdx !== -1) {
+            let found = false;
+            activeItems.forEach(item => {
+                if(!item.collected && Math.hypot(player.x - item.x, player.y - item.y) < 70) {
+                    const emptyIdx = inventory.indexOf(null);
+                    if(emptyIdx !== -1 && !found) {
                         inventory[emptyIdx] = item.emoji;
                         item.collected = true;
-                        pickedSomething = true;
+                        found = true;
                     }
                 }
             });
-            if(pickedSomething) {
-                updateUI();
-                renderItems();
-                if(activeItems.filter(i => !i.collected).length < 5) spawnItems(15);
-            }
+            if(found) { updateInventoryUI(); renderWorldItems(); if(activeItems.filter(i => !i.collected).length < 8) spawnItems(10); }
         };
 
         window.craft = function() {
-            // Find non-empty items
-            var filledIndices = [];
-            inventory.forEach((item, i) => { if(item !== null) filledIndices.push(i); });
-
-            if(filledIndices.length < 2) {
-                alert("Pick up at least 2 items first!");
-                return;
-            }
-
-            // Mix the first two available items
-            var i1 = filledIndices[0];
-            var i2 = filledIndices[1];
-            var itemA = inventory[i1];
-            var itemB = inventory[i2];
-
-            var result = recipes[itemA + itemB] || recipes[itemB + itemA];
-
-            if(result) {
-                // Remove ingredients
-                inventory[i1] = null;
-                inventory[i2] = null;
-                
-                // Add result to first empty slot
-                inventory[inventory.indexOf(null)] = result.res;
-
-                // Update balance
-                colinBalance += result.val;
+            const held = inventory.filter(i => i !== null);
+            if(held.length < 2) { alert("Grab 2 items first!"); return; }
+            const a = held[0], b = held[1];
+            const res = recipes[a+b] || recipes[b+a];
+            if(res) {
+                let rem = 0;
+                for(let i=0; i<inventory.length; i++){ if((inventory[i]===a||inventory[i]===b)&&rem<2){inventory[i]=null; rem++;} }
+                inventory[inventory.indexOf(null)] = res.res;
+                colinBalance += res.val;
                 localStorage.setItem('mixGuyColin', colinBalance);
-                document.getElementById('score').innerText = '🪙 ' + colinBalance + ' Colin';
-                
-                alert("Success! " + itemA + " + " + itemB + " = " + result.res + " (+ " + result.val + " Colin)");
-            } else {
-                alert("Mix failed! Those items don't go together.");
-            }
-            updateUI();
+                document.getElementById('score').innerText = "🪙 " + colinBalance;
+                alert("Success: " + res.res);
+            } else { alert("Mixing failed!"); }
+            updateInventoryUI();
         };
 
-        function updateUI() {
-            // Auto-sort: move everything to the left
-            var itemsOnly = inventory.filter(i => i !== null);
+        function updateInventoryUI() {
+            const filt = inventory.filter(i => i !== null);
             inventory = [null, null, null, null];
-            itemsOnly.forEach((item, i) => { if(i < 4) inventory[i] = item; });
-
-            var slots = document.querySelectorAll('.slot');
-            inventory.forEach(function(item, i) { 
-                slots[i].innerText = item || '⚫'; 
-            });
+            filt.forEach((item, i) => { if(i < 4) inventory[i] = item; });
+            const slots = document.querySelectorAll('.slot');
+            inventory.forEach((item, i) => { slots[i].innerText = item || '⚫'; });
         }
 
+        window.resetInventory = function() { inventory = [null, null, null, null]; updateInventoryUI(); };
         window.showRecipes = function() {
-            var m = "RECIPES:\\n";
-            for(var k in recipes) m += k + " = " + recipes[k].res + " (" + recipes[k].val + " Colin)\\n";
-            alert(m);
+            let l = "📜 RECIPES:\\n";
+            for(let k in recipes) l += k + " = " + recipes[k].res + "\\n";
+            alert(l);
         };
-
         init();
     <\/script>
 </body>
 </html>`;
+
+        
   
   document.getElementById('playCustomModal').style.display = 'flex';
   var runner = document.getElementById('gameRunner');
