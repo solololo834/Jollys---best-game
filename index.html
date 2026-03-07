@@ -23,14 +23,13 @@
     .pfp-layer { position: absolute; width: 100%; left: 0; top: 0; object-fit: cover; }
     .pfp-sket { z-index: 2; left: -5px; top: 10px; }
     .pfp-hat { z-index: 4; top: -15px; left: 15px; width: 80px; }
-    .pfp-face {
-      position: relative;
-      top: -50px;
-      right: -200px;
-      z-index: 3; width: 30px; }
+    .pfp-face { position: relative; top: 25px; left: 40px; z-index: 3; width: 40px; }
 
     #colinDisplay { background: #fff; border: 3px solid #333; display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-top: 10px; font-size: 18px; color: #b8860b; }
-    #skinButton { position: relative; right: 100px; cursor: pointer; background: none; border: none; transition: 0.3s; vertical-align: middle; margin-left: 10px; width: 100px; height: 100px; }
+    #skinButton { position:relative;
+      cursor: pointer; transition: 0.3s; width: 100px; height: 100px; margin-top: 10px;
+    left: -50px;
+    }
     #skinButton:hover { transform: scale(1.1) rotate(5deg); }
     
     .game-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 20px; }
@@ -50,7 +49,7 @@
     #gameArea { background: #aeefff; height: 100%; }
     #soap { font-size: 150px; cursor: pointer; user-select: none; display: inline-block; margin: 40px 0; transition: 0.1s; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); }
     .stats-box { background: white; padding: 20px; border-radius: 25px; border: 4px solid #333; margin-bottom: 20px; font-size: 22px; font-weight: bold; }
-    .btn-buy { background: #fff; border: 3px solid #333; padding: 15px; cursor: pointer; font-weight: bold; border-radius: 15px; }
+    .btn-buy { background: #fff; border: 3px solid #333; padding: 10px; cursor: pointer; font-weight: bold; border-radius: 15px; width: 100%; margin-top: 5px; }
 
     #storebut { position: relative; width: 150px; height: 150px; bottom: 180px; left: 150px; cursor: pointer; }
     #dailybut { position: relative; width: 170px; height: 170px; bottom: -20px; left: -70px; cursor: pointer; }
@@ -60,36 +59,17 @@
     #setcon { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 4000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
     #space { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; object-fit: cover; display: none; }
     .space-active { background: #000 !important; color: #fff !important; }
-    .delete-game-btn { position: absolute; top: -5px; right: -5px; background: red; color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; z-index: 10; font-weight: bold; }
+    .delete-game-btn { position: absolute; top: -5px; right: -5px; background: red; color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; z-index: 10; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .delete-game-btn:hover { background: darkred; transform: scale(1.1); }
     
     .char-preview { position: relative; width: 200px; height: 200px; margin: 0 auto 30px; }
     .layer { position: absolute; width: 100%; left: 0; top: 0; pointer-events: none; }
     .layer-jacket { z-index: 2; left: -10px; top: 20px; }
-    .pfp-layer { position: absolute; width: 100%; left: 0; top: 0; object-fit: cover; }
-.pfp-sket { z-index: 2; left: -5px; top: 10px; } /* Jaket/Baju */
-.pfp-face { z-index: 3; position: relative; width: 40px;
-top: 25px;
-left: 40px;
-} /* WAJAH (Sekarang di bawah topi) */
-.pfp-hat  { z-index: 4; top: -15px; left: 15px; width: 80px; } /* TOPI (Paling depan) */
-
-/* CSS untuk Modal Customizer juga perlu disesuaikan */
-.layer-face { z-index: 3; position: relative; width: 80px;
-top: 30px;
-}
-.layer-hat { z-index: 4; top: -30px; left: 30px; width: 130px;
-    
-    #creatorModal .modal-content { max-width: 600px; margin: 0 auto; padding: 30px 25px; background: linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%); border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-    #creatorModal h2 { font-size: 32px; color: #333; text-align: center; margin-bottom: 30px; text-shadow: 3px 3px 0 #FFDA37; letter-spacing: 2px; position: relative; }
-    #creatorModal label { display: block; font-weight: bold; font-size: 16px; color: #333; margin: 20px 0 8px 5px; text-transform: uppercase; letter-spacing: 1px; }
-    #customGameName, #customGameCode { width: 100%; padding: 15px 20px; border: 4px solid #333; border-radius: 20px; font-size: 16px; background: white; box-sizing: border-box; }
-    #customGameCode { min-height: 200px; font-family: 'Courier New', monospace; background: #1e1e1e; color: #fff; border-color: #FFDA37; }
-    #creatorModal input[type="file"] { width: 100%; padding: 15px; background: white; border: 4px dashed #333; border-radius: 20px; cursor: pointer; margin: 10px 0 5px; box-sizing: border-box; }
+    .layer-face { z-index: 3; position: relative; width: 80px; top: 30px; }
+    .layer-hat { z-index: 4; top: -30px; left: 30px; width: 130px; }
     
     .wash-shop { background: white; border: 4px solid #333; border-radius: 25px; padding: 20px; margin-top: 30px; }
     .shop-item { display: flex; align-items: center; justify-content: space-between; margin: 15px 0; padding: 10px; background: #f5f5f5; border-radius: 15px; border: 2px solid #333; }
-    
-    
   </style>
 </head>
 
@@ -106,7 +86,7 @@ top: 30px;
 
   <div id="profileArea">
     <div id="pfp-container">
-        <img src="basebody.png" class="pfp-layer" style="z-index: 1;">
+        <img src="basebody.png" id="main-pfp-body" class="pfp-layer" style="z-index: 1;">
         <img src="" id="main-pfp-face" class="pfp-layer pfp-face" style="display: none;">
         <img src="jollysket.png" id="main-pfp-sket" class="pfp-layer pfp-sket" style="display: none;">
         <img src="builderhat.png" id="main-pfp-hat" class="pfp-layer pfp-hat" style="display: none;">
@@ -132,17 +112,24 @@ top: 30px;
     <button class="close-btn" onclick="closeModals()">✕</button>
     <div class="modal-content">
        <h1>iJollyShop</h1>
-       <h2>________________________________</h2>
        <div class="game-container">
-         <div class="game-card"><img src="builderhat.png"><button class="btn-buy" onclick="buySkin('builderhat', 50)">BUY BUILDERHAT (50)</button></div>
-         <div class="game-card"><img src="jollysket.png"><button class="btn-buy" style="background:lightblue" onclick="buySkin('jollysket', 100)">BUY JOLLYSKET (100)</button></div>
+         <!-- Existing skins -->
+         <div class="game-card"><img src="builderhat.png"><button class="btn-buy" onclick="buySkin('builderhat', 50)">BUY BUILDER (50)</button></div>
+         <div class="game-card"><img src="pirate.png"><button class="btn-buy" onclick="buySkin('pirate', 200)">BUY PIRATE (200)</button></div>
+         <div class="game-card"><img src="chef.png"><button class="btn-buy" onclick="buySkin('chef', 180)">BUY CHEF (180)</button></div>
+         <div class="game-card"><img src="fedora.png"><button class="btn-buy" onclick="buySkin('fedora', 250)">BUY FEDORA (250)</button></div>
+         <div class="game-card"><img src="jollysket.png"><button class="btn-buy" style="background:lightblue" onclick="buySkin('jollysket', 100)">BUY SKET (100)</button></div>
          <div class="game-card"><img src="chewing.png"><button class="btn-buy" onclick="buySkin('chewing', 150)">BUY CHEWING (150)</button></div>
          <div class="game-card"><img src="p.png"><button class="btn-buy" onclick="buySkin('p', 150)">BUY :P (150)</button></div>
-         <div class="game-card"><img src="smile.png"><button class="btn-buy" onclick="buySkin('smile', 150)">BUY ^_^ (150)
-         </button>
-         <h4>(get colin in mixguy)</h4>
-</div>
+         <div class="game-card"><img src="smile.png"><button class="btn-buy" onclick="buySkin('smile', 150)">BUY ^_^ (150)</button></div>
+         <!-- NEW BODY SKINS (WATERMELON & SKELETON) -->
+         <div class="game-card"><img src="watermelon.png"><button class="btn-buy" onclick="buySkin('watermelon', 400)">BUY WATERMELON (400)</button></div>
+         <div class="game-card"><img src="skeleton.png"><button class="btn-buy" onclick="buySkin('skeleton', 300)">BUY SKELETON (300)</button></div>
+         <!-- NEW SKET (JACKET) SKINS -->
+         <div class="game-card"><img src="n.png"><button class="btn-buy" onclick="buySkin('n', 100)">BUY N SKET (100)</button></div>
+         <div class="game-card"><img src="jollysket2.png"><button class="btn-buy" onclick="buySkin('jollysket2', 100)">BUY SKET2 (100)</button></div>
        </div>
+       <h4>(get colin in mixguy)</h4>
     </div>
   </div>
 
@@ -176,9 +163,9 @@ top: 30px;
     <button class="close-btn" onclick="closeModals()">✕</button>
     <div class="modal-content">
       <h2>⚒️ GAME CREATOR</h2>
-      <input type="text" id="customGameName" placeholder="Game Name">
+      <input type="text" id="customGameName" placeholder="Game Name" style="width:100%; padding:10px; margin-bottom:10px;">
       <label>Icon:</label><input type="file" id="customGameIcon" accept="image/*">
-      <textarea id="customGameCode" placeholder="Paste HTML code here..."></textarea>
+      <textarea id="customGameCode" placeholder="Paste HTML code here..." style="width:100%; height:200px; margin-top:10px;"></textarea>
       <button class="btn-save" onclick="saveNewGame()">💾 SAVE GAME</button>
     </div>
   </div>
@@ -189,25 +176,40 @@ top: 30px;
   </div>
 
   <script>
-    let isHolding = false;
-    let cleanProgress = parseInt(localStorage.getItem('washProgress') || '0');
-    let money = parseInt(localStorage.getItem('washMoney') || '0');
-    let basePower = parseInt(localStorage.getItem('washPower') || '1');
-    let currentPower = basePower;
-
+    // --- CORE SYSTEM & UI UPDATE ---
     function updateMainColin() { 
       document.getElementById('mainColinCount').innerText = localStorage.getItem('mixGuyColin') || '0'; 
     }
     
     function updatePFP() {
-      const useHat = localStorage.getItem('use_builderhat') === 'true';
-      const useSket = localStorage.getItem('use_jollysket') === 'true';
-      const useDoodle = localStorage.getItem('use_doodle') === 'true';
+      const activeBody = localStorage.getItem('active_body') || 'basebody';
+      const activeHat = localStorage.getItem('active_hat') || '';
+      const activeSket = localStorage.getItem('active_sket') || '';
       const activeFace = localStorage.getItem('active_face') || '';
 
-      document.getElementById('main-pfp-hat').style.display = useHat ? 'block' : 'none';
-      document.getElementById('main-pfp-sket').style.display = useSket ? 'block' : 'none';
+      // Body
+      const bodyEl = document.getElementById('main-pfp-body');
+      bodyEl.src = activeBody + ".png";
+
+      // Hat
+      const hatEl = document.getElementById('main-pfp-hat');
+      if(activeHat) {
+        hatEl.src = activeHat + ".png";
+        hatEl.style.display = "block";
+      } else {
+        hatEl.style.display = "none";
+      }
+
+      // Sket (jacket)
+      const sketEl = document.getElementById('main-pfp-sket');
+      if (activeSket) {
+        sketEl.src = activeSket + ".png";
+        sketEl.style.display = "block";
+      } else {
+        sketEl.style.display = "none";
+      }
       
+      // Face
       const faceEl = document.getElementById('main-pfp-face');
       if(activeFace) {
         faceEl.src = activeFace + ".png";
@@ -215,11 +217,9 @@ top: 30px;
       } else {
         faceEl.style.display = "none";
       }
-
-      const baseBodyImg = document.querySelector('#pfp-container img[style*="z-index: 1"]');
-      baseBodyImg.src = useDoodle ? "doodle.png" : "basebody.png";
     }
 
+    // --- STORE LOGIC ---
     function buySkin(id, price) {
       let bal = parseInt(localStorage.getItem('mixGuyColin') || '0');
       if (localStorage.getItem('unlocked_'+id) === 'true') return alert("Already owned!");
@@ -230,369 +230,248 @@ top: 30px;
       } else alert("❌ Need more Colin!");
     }
 
-    function toggleEquip(id) {
-  // LOGIKA TOMBOL DEFAULT
-  if (id === 'default') {
-    localStorage.setItem('use_builderhat', 'false');
-    localStorage.setItem('use_jollysket', 'false');
-    localStorage.setItem('use_doodle', 'false'); // Reset ke basebody
-    localStorage.setItem('active_face', '');      // Hapus wajah
-    
-    renderSkins('custom');
-    updatePFP();
-    return; // Keluar dari fungsi
-  }
+    // --- CUSTOMIZER LOGIC ---
+    function toggleEquip(type, id) {
+      if (id === 'default') {
+        localStorage.setItem('active_body', 'basebody');
+        localStorage.setItem('active_hat', '');
+        localStorage.setItem('active_sket', '');
+        localStorage.setItem('active_face', '');
+      } 
+      else if (type === 'body') {
+        localStorage.setItem('active_body', id);
+      }
+      else if (type === 'hat') {
+        let current = localStorage.getItem('active_hat');
+        localStorage.setItem('active_hat', current === id ? '' : id);
+      } 
+      else if (type === 'face') {
+        let current = localStorage.getItem('active_face');
+        localStorage.setItem('active_face', current === id ? '' : id);
+      } 
+      else if (type === 'sket') {
+        let currentSket = localStorage.getItem('active_sket') || '';
+        if (currentSket === id) {
+          localStorage.setItem('active_sket', '');
+        } else {
+          localStorage.setItem('active_sket', id);
+        }
+      }
 
-  // LOGIKA UNTUK FACE (p, smile, chewing)
-  if(['chewing', 'p', 'smile'].includes(id)) {
-    let current = localStorage.getItem('active_face');
-    // Jika klik wajah yang sama, lepas (toggle off), jika beda, ganti.
-    localStorage.setItem('active_face', current === id ? '' : id);
-  } 
-  
-  // LOGIKA UNTUK DOODLE SKIN
-  else if (id === 'doodle') {
-    let isEquipped = localStorage.getItem('use_doodle') === 'true';
-    localStorage.setItem('use_doodle', !isEquipped);
-  }
-  
-  // LOGIKA UNTUK ITEM LAIN (Hat, Sket)
-  else {
-    let isEquipped = localStorage.getItem('use_' + id) === 'true';
-    localStorage.setItem('use_' + id, !isEquipped);
-  }
-
-  // Refresh tampilan
-  renderSkins(id === 'doodle' ? 'skins' : 'custom');
-  updatePFP();
-}
-
+      renderSkins('skins');
+      renderSkins('custom');
+      updatePFP();
+    }
 
     function renderSkins(tabType) {
       const content = document.getElementById('skinContent');
       content.innerHTML = ''; 
+      
       if (tabType === 'skins') {
-        if (localStorage.getItem('doodleSkin') === 'true') {
-          const useDoodle = localStorage.getItem('use_doodle') === 'true';
-          content.innerHTML = `
-            <div class="game-card ${useDoodle ? 'equipped-style' : ''}" onclick="toggleEquip('doodle')">
-              <img src="doodle.png"><p>DOODLE SKIN</p><small>${useDoodle ? 'EQUIPPED' : 'CLICK TO EQUIP'}</small>
-            </div>`;
-        } else {
-          let prog = localStorage.getItem('washProgress') || "0";
-          content.innerHTML = `<h3>❌ No Skins unlocked</h3><p>Reach 100k% on wash to eat to get doodleSkin 🤐<br>Current: ${parseInt(prog).toLocaleString()}%</p>`;
+        const activeBody = localStorage.getItem('active_body') || 'basebody';
+        
+        let skinsHTML = `
+          <div class="char-preview">
+            <img src="${activeBody}.png" class="layer" style="z-index:1">
+            ${localStorage.getItem('active_face') ? `<img src="${localStorage.getItem('active_face')}.png" class="layer layer-face">` : ''}
+            ${localStorage.getItem('active_sket') ? `<img src="${localStorage.getItem('active_sket')}.png" class="layer layer-jacket">` : ''}
+            ${localStorage.getItem('active_hat') ? `<img src="${localStorage.getItem('active_hat')}.png" class="layer layer-hat">` : ''}
+          </div>
+          <div class="game-container">
+            <div class="game-card ${activeBody === 'basebody' ? 'equipped-style' : ''}" onclick="toggleEquip('body', 'basebody')"><img src="basebody.png"><p>BASE BODY</p></div>
+        `;
+        
+        if (localStorage.getItem('unlocked_watermelon') === 'true') {
+          skinsHTML += `<div class="game-card ${activeBody === 'watermelon' ? 'equipped-style' : ''}" onclick="toggleEquip('body', 'watermelon')"><img src="watermelon.png"><p>WATERMELON</p></div>`;
         }
-      } else if (tabType === 'custom') {
-        const useHat = localStorage.getItem('use_builderhat') === 'true';
-        const useSket = localStorage.getItem('use_jollysket') === 'true';
-        const useDoodle = localStorage.getItem('use_doodle') === 'true';
+        
+        if (localStorage.getItem('unlocked_skeleton') === 'true') {
+          skinsHTML += `<div class="game-card ${activeBody === 'skeleton' ? 'equipped-style' : ''}" onclick="toggleEquip('body', 'skeleton')"><img src="skeleton.png"><p>SKELETON</p></div>`;
+        }
+        
+        if (localStorage.getItem('doodleSkin') === 'true') {
+          skinsHTML += `<div class="game-card ${activeBody === 'doodle' ? 'equipped-style' : ''}" onclick="toggleEquip('body', 'doodle')"><img src="doodle.png"><p>DOODLE</p></div>`;
+        } else {
+          skinsHTML += `<div class="game-card" style="opacity:0.5"><img src="doodle.png"><p>??? (Wash 100k%)</p></div>`;
+        }
+        
+        skinsHTML += `</div>`;
+        content.innerHTML = skinsHTML;
+        
+      } else {
+        const activeHat = localStorage.getItem('active_hat') || '';
+        const activeSket = localStorage.getItem('active_sket') || '';
         const activeFace = localStorage.getItem('active_face') || '';
-
-        let faceHTML = activeFace ? `<img src="${activeFace}.png" class="layer layer-face">` : '';
 
         content.innerHTML = `
           <div class="char-preview">
-            <img src="${useDoodle ? 'doodle.png' : 'basebody.png'}" class="layer" style="z-index:1">
-            ${faceHTML}
-            <img src="jollysket.png" class="layer layer-jacket" style="display: ${useSket ? 'block' : 'none'};">
-            <img src="builderhat.png" class="layer layer-hat" style="display: ${useHat ? 'block' : 'none'};">
-          </div><hr>
+            <img src="${localStorage.getItem('active_body') || 'basebody'}.png" class="layer" style="z-index:1">
+            ${activeFace ? `<img src="${activeFace}.png" class="layer layer-face">` : ''}
+            ${activeSket ? `<img src="${activeSket}.png" class="layer layer-jacket">` : ''}
+            ${activeHat ? `<img src="${activeHat}.png" class="layer layer-hat">` : ''}
+          </div>
           <div class="game-container">
-            <div class="game-card" onclick="toggleEquip('default')"><img src="default.png"><p>Default</p></div>
-            ${localStorage.getItem('unlocked_builderhat') === 'true' ? `<div class="game-card ${useHat ? 'equipped-style' : ''}" onclick="toggleEquip('builderhat')"><img src="builderhat.png"><p>Hat</p></div>` : ''}
-            ${localStorage.getItem('unlocked_jollysket') === 'true' ? `<div class="game-card ${useSket ? 'equipped-style' : ''}" onclick="toggleEquip('jollysket')"><img src="jollysket.png"><p>Jollysket</p></div>` : ''}
-            ${localStorage.getItem('unlocked_chewing') === 'true' ? `<div class="game-card ${activeFace === 'chewing' ? 'equipped-style' : ''}" onclick="toggleEquip('chewing')"><img src="chewing.png"><p>Chewing</p></div>` : ''}
-            ${localStorage.getItem('unlocked_p') === 'true' ? `<div class="game-card ${activeFace === 'p' ? 'equipped-style' : ''}" onclick="toggleEquip('p')"><img src="p.png"><p>:P</p></div>` : ''}
-            ${localStorage.getItem('unlocked_smile') === 'true' ? `<div class="game-card ${activeFace === 'smile' ? 'equipped-style' : ''}" onclick="toggleEquip('smile')"><img src="smile.png"><p>^_^</p></div>` : ''}
+            <div class="game-card" onclick="toggleEquip('reset', 'default')"><img src="default.png"><p>REMOVE ALL</p></div>
+            
+            <h3 style="width:100%; margin:10px 0;">HATS</h3>
+            ${localStorage.getItem('unlocked_builderhat') === 'true' ? `<div class="game-card ${activeHat === 'builderhat' ? 'equipped-style' : ''}" onclick="toggleEquip('hat', 'builderhat')"><img src="builderhat.png"><p>BUILDER</p></div>` : ''}
+            ${localStorage.getItem('unlocked_pirate') === 'true' ? `<div class="game-card ${activeHat === 'pirate' ? 'equipped-style' : ''}" onclick="toggleEquip('hat', 'pirate')"><img src="pirate.png"><p>PIRATE</p></div>` : ''}
+            ${localStorage.getItem('unlocked_chef') === 'true' ? `<div class="game-card ${activeHat === 'chef' ? 'equipped-style' : ''}" onclick="toggleEquip('hat', 'chef')"><img src="chef.png"><p>CHEF</p></div>` : ''}
+            ${localStorage.getItem('unlocked_fedora') === 'true' ? `<div class="game-card ${activeHat === 'fedora' ? 'equipped-style' : ''}" onclick="toggleEquip('hat', 'fedora')"><img src="fedora.png"><p>FEDORA</p></div>` : ''}
+            
+            <h3 style="width:100%; margin:10px 0;">JACKETS</h3>
+            ${localStorage.getItem('unlocked_jollysket') === 'true' ? `<div class="game-card ${activeSket === 'jollysket' ? 'equipped-style' : ''}" onclick="toggleEquip('sket', 'jollysket')"><img src="jollysket.png"><p>JOLLYSKET</p></div>` : ''}
+            ${localStorage.getItem('unlocked_n') === 'true' ? `<div class="game-card ${activeSket === 'n' ? 'equipped-style' : ''}" onclick="toggleEquip('sket', 'n')"><img src="n.png"><p>N SKET</p></div>` : ''}
+            ${localStorage.getItem('unlocked_jollysket2') === 'true' ? `<div class="game-card ${activeSket === 'jollysket2' ? 'equipped-style' : ''}" onclick="toggleEquip('sket', 'jollysket2')"><img src="jollysket2.png"><p>SKET 2</p></div>` : ''}
+            
+            <h3 style="width:100%; margin:10px 0;">FACES</h3>
+            ${localStorage.getItem('unlocked_chewing') === 'true' ? `<div class="game-card ${activeFace === 'chewing' ? 'equipped-style' : ''}" onclick="toggleEquip('face', 'chewing')"><img src="chewing.png"><p>CHEWING</p></div>` : ''}
+            ${localStorage.getItem('unlocked_p') === 'true' ? `<div class="game-card ${activeFace === 'p' ? 'equipped-style' : ''}" onclick="toggleEquip('face', 'p')"><img src="p.png"><p>:P</p></div>` : ''}
+            ${localStorage.getItem('unlocked_smile') === 'true' ? `<div class="game-card ${activeHat === 'builderhat' ? 'equipped-style' : ''}" onclick="toggleEquip('hat', 'builderhat')"><img src="builderhat.png"><p>BUILDER</p></div>` : ''}
+            ${localStorage.getItem('unlocked_pirate') === 'true' ? `<div class="game-card ${activeHat === 'pirate' ? 'equipped-style' : ''}" onclick="toggleEquip('hat', 'pirate')"><img src="pirate.png"><p>PIRATE</p></div>` : ''}
+            ${localStorage.getItem('unlocked_chef') === 'true' ? `<div class="game-card ${activeHat === 'chef' ? 'equipped-style' : ''}" onclick="toggleEquip('hat', 'chef')"><img src="chef.png"><p>CHEF</p></div>` : ''}
+            ${localStorage.getItem('unlocked_fedora') === 'true' ? `<div class="game-card ${activeHat === 'fedora' ? 'equipped-style' : ''}" onclick="toggleEquip('hat', 'fedora')"><img src="fedora.png"><p>FEDORA</p></div>` : ''}
+            
+            <h3 style="width:100%; margin:10px 0;">JACKETS</h3>
+            ${localStorage.getItem('unlocked_jollysket') === 'true' ? `<div class="game-card ${activeSket === 'jollysket' ? 'equipped-style' : ''}" onclick="toggleEquip('sket', 'jollysket')"><img src="jollysket.png"><p>JOLLYSKET</p></div>` : ''}
+            ${localStorage.getItem('unlocked_n') === 'true' ? `<div class="game-card ${activeSket === 'n' ? 'equipped-style' : ''}" onclick="toggleEquip('sket', 'n')"><img src="n.png"><p>N SKET</p></div>` : ''}
+            ${localStorage.getItem('unlocked_jollysket2') === 'true' ? `<div class="game-card ${activeSket === 'jollysket2' ? 'equipped-style' : ''}" onclick="toggleEquip('sket', 'jollysket2')"><img src="jollysket2.png"><p>SKET 2</p></div>` : ''}
+            
+            <h3 style="width:100%; margin:10px 0;">FACES</h3>
+            ${localStorage.getItem('unlocked_chewing') === 'true' ? `<div class="game-card ${activeFace === 'chewing' ? 'equipped-style' : ''}" onclick="toggleEquip('face', 'chewing')"><img src="chewing.png"><p>CHEWING</p></div>` : ''}
+            ${localStorage.getItem('unlocked_p') === 'true' ? `<div class="game-card ${activeFace === 'p' ? 'equipped-style' : ''}" onclick="toggleEquip('face', 'p')"><img src="p.png"><p>:P</p></div>` : ''}
+            ${localStorage.getItem('unlocked_smile') === 'true' ? `<div class="game-card ${activeFace === 'smile' ? 'equipped-style' : ''}" onclick="toggleEquip('face', 'smile')"><img src="smile.png"><p>^_^</p></div>` : ''}
           </div>`;
       }
     }
 
-    // --- (Fungsi Wash To Eat, Mix Guy, & System tetap sama) ---
+    // --- WASH TO EAT ---
+    let isHolding = false;
+    let cleanProgress = parseInt(localStorage.getItem('washProgress') || '0');
+    let money = parseInt(localStorage.getItem('washMoney') || '0');
+    let basePower = parseInt(localStorage.getItem('washPower') || '1');
+    
     function openWashGame() {
       cleanProgress = parseInt(localStorage.getItem('washProgress') || '0');
       money = parseInt(localStorage.getItem('washMoney') || '0');
       basePower = parseInt(localStorage.getItem('washPower') || '1');
-      currentPower = basePower;
       document.getElementById('percentDisp').innerText = cleanProgress.toLocaleString() + "%";
-      let mDisp = document.getElementById('moneyDispFixed') || document.createElement('div');
-      mDisp.id = 'moneyDispFixed';
-      mDisp.style = 'position:fixed; top:20px; right:80px; background:#FFDA37; border:3px solid #333; border-radius:20px; padding:10px 20px; font-weight:bold; z-index:9999;';
-      document.body.appendChild(mDisp);
-      mDisp.innerText = "💰 " + money; mDisp.style.display = 'block';
       document.getElementById('gameModal').style.display = 'flex';
     }
-
-    function buyItem(type, cost, power) {
-      if (money >= cost) {
-        money -= cost; basePower += power; currentPower = basePower;
-        localStorage.setItem('washMoney', money); localStorage.setItem('washPower', basePower);
-        document.getElementById('moneyDispFixed').innerText = "💰 " + money;
-      } else alert("❌ Not enough money!");
-    }
-
+    
     const soapEl = document.getElementById('soap');
     soapEl.onmousedown = soapEl.ontouchstart = (e) => { e.preventDefault(); isHolding = true; };
     window.onmouseup = window.ontouchend = () => { isHolding = false; };
-
+    
     setInterval(() => {
       if (document.getElementById('gameModal').style.display === 'flex' && isHolding && cleanProgress < 100000) {
-        cleanProgress += currentPower;
+        cleanProgress += basePower;
         if (cleanProgress > 100000) cleanProgress = 100000;
         document.getElementById('percentDisp').innerText = cleanProgress.toLocaleString() + "%";
         localStorage.setItem('washProgress', cleanProgress);
         if (cleanProgress >= 100000 && localStorage.getItem('doodleSkin') !== 'true') {
-          localStorage.setItem('doodleSkin', 'true'); alert("🎉 DOODLE SKIN UNLOCKED!");
+          localStorage.setItem('doodleSkin', 'true'); 
+          alert("🎉 DOODLE SKIN UNLOCKED!");
         }
       }
     }, 50);
-
+    
     setInterval(() => {
-      if (document.getElementById('gameModal').style.display === 'flex') {
-        money += currentPower * 2; localStorage.setItem('washMoney', money);
-        if(document.getElementById('moneyDispFixed')) document.getElementById('moneyDispFixed').innerText = "💰 " + money;
+      if (document.getElementById('gameModal').style.display === 'flex' && isHolding) {
+        money += basePower * 2; 
+        localStorage.setItem('washMoney', money);
       }
     }, 1000);
+    
+    function buyItem(type, cost, power) {
+      if (money >= cost) { 
+        money -= cost; 
+        basePower += power; 
+        localStorage.setItem('washMoney', money); 
+        localStorage.setItem('washPower', basePower); 
+      } else alert("❌ No money!");
+    }
 
-    function openSkinModal() { document.getElementById('skinModal').style.display = 'flex'; renderSkins('custom'); }
+    // --- MIX GUY ---
+    function openMixGuy() {
+      const mixGuyCode = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><style>*{margin:0;padding:0;box-sizing:border-box;user-select:none;}body{background:#1a3b1a;min-height:100vh;overflow:hidden;font-family:sans-serif;}#world{position:absolute;width:2000px;height:2000px;background-color:#1a3b1a;transition:transform:0.1s ease-out;}#player-sprite{position:absolute;width:60px;height:60px;left:50%;top:50%;transform:translate(-50%,-50%);z-index:100;pointer-events:none;}.top-bar{position:fixed;top:10px;left:10px;right:10px;display:flex;gap:8px;z-index:1000;}.top-btn{flex:1;padding:10px;border:none;border-radius:8px;font-weight:bold;font-size:0.8rem;cursor:pointer;color:white;}.btn-recipe{background:#f0c05e;color:#352b18;}.btn-clear{background:#f44336;}.btn-mix{background:#ff9800;}.score-board{position:fixed;top:60px;left:10px;background:rgba(0,0,0,0.7);padding:5px 15px;border:1px solid gold;color:gold;z-index:1000;border-radius:20px;}.pickup-container{position:fixed;bottom:30px;left:20px;z-index:1000;}.pickup-btn{width:80px;height:80px;background:#4CAF50;color:white;border:none;border-radius:50%;font-weight:bold;}.inventory-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:999;}.inventory{background:rgba(47,84,47,0.9);padding:6px;display:flex;gap:6px;border:2px solid #ebc76e;border-radius:12px;}.slot{width:45px;height:45px;background:#352b18;display:flex;align-items:center;justify-content:center;font-size:1.5rem;border-radius:8px;}.controls{position:fixed;bottom:20px;right:20px;display:grid;grid-template-columns:repeat(3,50px);gap:5px;z-index:1000;}.ctrl{width:50px;height:50px;background:rgba(231,197,139,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;}.item{position:absolute;font-size:2rem;transform:translate(-50%,-50%);}.tree{position:absolute;font-size:4rem;opacity:0.6;pointer-events:none;transform:translate(-50%,-50%);}</style></head><body><div id="world"><div id="trees"></div><div id="items"></div></div><img src="scb.png" id="player-sprite" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=MixGuy'"><div class="top-bar"><button class="top-btn btn-recipe" onclick="showRecipes()">RECIPES📔</button><button class="top-btn btn-clear" onclick="resetInventory()">CLEAR🗑️</button><button class="top-btn btn-mix" onclick="craft()">MIX🌀</button></div><div class="score-board" id="score">🪙 0</div><div class="pickup-container"><button class="pickup-btn" onclick="pickup()">✋<br>PICKUP</button></div><div class="inventory-container"><div class="inventory"><div class="slot">⚫</div><div class="slot">⚫</div><div class="slot">⚫</div><div class="slot">⚫</div></div></div><div class="controls"><div style="grid-column:2" class="ctrl" onclick="move(0,-80)">↑</div><div style="grid-column:1" class="ctrl" onclick="move(-80,0)">←</div><div style="grid-column:2" class="ctrl" onclick="move(0,80)">↓</div><div style="grid-column:3" class="ctrl" onclick="move(80,0)">→</div></div><script>const player={x:1000,y:1000};let inventory=[null,null,null,null];let colinBalance=parseInt(localStorage.getItem('mixGuyColin')||'0');const rawItems=['🍌','🍎','🥚','🍯','🔥','💧','🐟','🧂'];let activeItems=[];const recipes={'🍎🍯':{res:'🍏',val:15},'🥚🔥':{res:'🍳',val:10},'🍌💧':{res:'🥤',val:12},'🐟🔥':{res:'🍗',val:20},'🐟🧂':{res:'🍱',val:25},'🍎🔥':{res:'🥧',val:18},'🥚💧':{res:'🍜',val:22},'🍯💧':{res:'🍺',val:15},'🧂💧':{res:'🌊',val:5}};function init(){document.getElementById('score').innerText="🪙 "+colinBalance;const treeDiv=document.getElementById('trees');for(let i=0;i<35;i++){const t=document.createElement('div');t.className='tree';t.innerText='🌳';t.style.left=(Math.random()*1900+50)+'px';t.style.top=(Math.random()*1900+50)+'px';treeDiv.appendChild(t);}spawnItems(25);updateCamera();updateInventoryUI();}function spawnItems(count){for(let i=0;i<count;i++){activeItems.push({emoji:rawItems[Math.floor(Math.random()*rawItems.length)],x:Math.random()*1800+100,y:Math.random()*1800+100,collected:false});}renderWorldItems();}function renderWorldItems(){const container=document.getElementById('items');container.innerHTML='';activeItems.forEach(item=>{if(!item.collected){const d=document.createElement('div');d.className='item';d.innerText=item.emoji;d.style.left=item.x+'px';d.style.top=item.y+'px';container.appendChild(d);}});}window.move=function(dx,dy){player.x=Math.max(50,Math.min(1950,player.x+dx));player.y=Math.max(50,Math.min(1950,player.y+dy));updateCamera();};function updateCamera(){const ox=(window.innerWidth/2)-player.x;const oy=(window.innerHeight/2)-player.y;document.getElementById('world').style.transform="translate("+ox+"px,"+oy+"px)";}window.pickup=function(){let found=false;activeItems.forEach(item=>{if(!item.collected&&Math.hypot(player.x-item.x,player.y-item.y)<70){const emptyIdx=inventory.indexOf(null);if(emptyIdx!==-1&&!found){inventory[emptyIdx]=item.emoji;item.collected=true;found=true;}}});if(found){updateInventoryUI();renderWorldItems();if(activeItems.filter(i=>!i.collected).length<8)spawnItems(10);}};window.craft=function(){const held=inventory.filter(i=>i!==null);if(held.length<2){alert("Grab 2 items!");return;}const a=held[0],b=held[1];const res=recipes[a+b]||recipes[b+a];if(res){let rem=0;for(let i=0;i<inventory.length;i++){if((inventory[i]===a||inventory[i]===b)&&rem<2){inventory[i]=null;rem++;}}inventory[inventory.indexOf(null)]=res.res;colinBalance+=res.val;localStorage.setItem('mixGuyColin',colinBalance);document.getElementById('score').innerText="🪙 "+colinBalance;alert("Success: "+res.res);}else{alert("Failed!");}updateInventoryUI();};function updateInventoryUI(){const filt=inventory.filter(i=>i!==null);inventory=[null,null,null,null];filt.forEach((item,i)=>{if(i<4)inventory[i]=item;});const slots=document.querySelectorAll('.slot');inventory.forEach((item,i)=>{slots[i].innerText=item||'⚫';});}window.resetInventory=function(){inventory=[null,null,null,null];updateInventoryUI();};window.showRecipes=function(){let l="📜 RECIPES:\\n";for(let k in recipes)l+=k+" = "+recipes[k].res+"\\n";alert(l);};init();<\/script></body></html>`;
+      document.getElementById('playCustomModal').style.display = 'flex';
+      var runner = document.getElementById('gameRunner');
+      var doc = runner.contentWindow.document;
+      doc.open(); doc.write(mixGuyCode); doc.close();
+    }
+
+    // --- CUSTOM GAME FUNCTIONS ---
+    function saveNewGame() {
+      const name = document.getElementById('customGameName').value;
+      const code = document.getElementById('customGameCode').value;
+      const file = document.getElementById('customGameIcon').files[0];
+      
+      if (!name || !code || !file) return alert("Fill all fields!");
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
+        games.push({ 
+          id: Date.now(), 
+          name, 
+          code, 
+          icon: e.target.result 
+        });
+        localStorage.setItem('myCustomGames', JSON.stringify(games));
+        alert("✅ Game saved!");
+        closeModals();
+        location.reload(); // Refresh to show new game
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // FIXED: Delete game function
+    window.deleteGame = function(gameId) {
+      if (confirm("Are you sure you want to delete this game?")) {
+        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
+        games = games.filter(g => g.id !== gameId);
+        localStorage.setItem('myCustomGames', JSON.stringify(games));
+        location.reload(); // Refresh to update the list
+      }
+    }
+
+    // --- OTHER UI LOGIC ---
+    function openSkinModal() { 
+      document.getElementById('skinModal').style.display = 'flex'; 
+      renderSkins('skins');
+    }
+    
     function openCreator() { document.getElementById('creatorModal').style.display = 'flex'; }
+    
     function closeModals() {
       document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
       document.getElementById('gameRunner').src = "about:blank";
-      if (document.getElementById('moneyDispFixed')) document.getElementById('moneyDispFixed').style.display = 'none';
       updateMainColin();
     }
-
+    
     document.getElementById('setting').onclick = () => document.getElementById('setcon').style.display='flex';
+    
     document.getElementById('spacon').onclick = () => {
       let s = document.getElementById("space");
       s.style.display = (s.style.display === "block") ? "none" : "block";
       document.body.classList.toggle("space-active");
-      document.getElementById("header").style.background = "linear-gradient(135deg, #E262BC, #003DD8)";
-    };
-
-   
-function openMixGuy() {
-  const mixGuyCode = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mix Guy - Compact Edition</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
-        body { background: #1a3b1a; min-height: 100vh; overflow: hidden; font-family: sans-serif; }
-        
-        #world { position: absolute; width: 2000px; height: 2000px; background-color: #1a3b1a; transition: transform 0.1s ease-out; }
-        #player-sprite { position: absolute; width: 60px; height: 60px; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 100; pointer-events: none; }
-        
-        /* TOP HUD: Recipe, Clear, Mix */
-        .top-bar { position: fixed; top: 10px; left: 10px; right: 10px; display: flex; gap: 8px; z-index: 1000; }
-        .top-btn { flex: 1; padding: 10px; border: none; border-radius: 8px; font-weight: bold; font-size: 0.8rem; cursor: pointer; border-bottom: 3px solid rgba(0,0,0,0.2); color: white; }
-        .btn-recipe { background: #f0c05e; color: #352b18; }
-        .btn-clear { background: #f44336; }
-        .btn-mix { background: #ff9800; }
-        
-        /* SCORE */
-        .score-board { position: fixed; top: 60px; left: 10px; background: rgba(0,0,0,0.7); padding: 5px 15px; border: 1px solid gold; color: gold; z-index: 1000; border-radius: 20px; font-size: 0.9rem; }
-        
-        /* BOTTOM LEFT: Pickup Button */
-        .pickup-container { position: fixed; bottom: 30px; left: 20px; z-index: 1000; }
-        .pickup-btn { width: 80px; height: 80px; background: #4CAF50; color: white; border: none; border-radius: 50%; font-weight: bold; box-shadow: 0 5px #2e6b31; font-size: 0.9rem; cursor: pointer; }
-        .pickup-btn:active { transform: translateY(3px); box-shadow: none; }
-
-        /* BOTTOM CENTER: Compact Inventory */
-        .inventory-container { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 999; }
-        .inventory { background: rgba(47, 84, 47, 0.9); padding: 6px; display: flex; gap: 6px; border: 2px solid #ebc76e; border-radius: 12px; }
-        .slot { width: 45px; height: 45px; background: #352b18; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: 8px; border: 1px solid #5d4a2a; }
-
-        /* BOTTOM RIGHT: Controls */
-        .controls { position: fixed; bottom: 20px; right: 20px; display: grid; grid-template-columns: repeat(3, 50px); gap: 5px; z-index: 1000; }
-        .ctrl { width: 50px; height: 50px; background: rgba(231, 197, 139, 0.9); border: 1px solid #8f6a2b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; box-shadow: 0 3px #8f6a2b; }
-        
-        .item { position: absolute; font-size: 2rem; transform: translate(-50%, -50%); }
-        .tree { position: absolute; font-size: 4rem; opacity: 0.6; pointer-events: none; transform: translate(-50%, -50%); }
-    </style>
-</head>
-<body>
-    <div id="world"><div id="trees"></div><div id="items"></div></div>
-    
-    <img src="scb.png" id="player-sprite" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=MixGuy'">
-
-    <div class="top-bar">
-        <button class="top-btn btn-recipe" onclick="showRecipes()">RECIPES📔</button>
-        <button class="top-btn btn-clear" onclick="resetInventory()">CLEAR🗑️</button>
-        <button class="top-btn btn-mix" onclick="craft()">MIX🌀</button>
-    </div>
-
-    <div class="score-board" id="score">🪙 0</div>
-
-    <div class="pickup-container">
-        <button class="pickup-btn" onclick="pickup()">✋<br>PICKUP</button>
-    </div>
-
-    <div class="inventory-container">
-        <div class="inventory">
-            <div class="slot">⚫</div><div class="slot">⚫</div><div class="slot">⚫</div><div class="slot">⚫</div>
-        </div>
-    </div>
-
-    <div class="controls">
-        <div style="grid-column:2" class="ctrl" onclick="move(0,-80)">↑</div>
-        <div style="grid-column:1" class="ctrl" onclick="move(-80,0)">←</div>
-        <div style="grid-column:2" class="ctrl" onclick="move(0,80)">↓</div>
-        <div style="grid-column:3" class="ctrl" onclick="move(80,0)">→</div>
-    </div>
-
-    <script>
-        const player = { x: 1000, y: 1000 };
-        let inventory = [null, null, null, null];
-        let colinBalance = parseInt(localStorage.getItem('mixGuyColin') || '0');
-        const rawItems = ['🍌', '🍎', '🥚', '🍯', '🔥', '💧', '🐟', '🧂'];
-        let activeItems = [];
-        const recipes = {
-            '🍎🍯': { res: '🍏', val: 15 }, '🥚🔥': { res: '🍳', val: 10 },
-            '🍌💧': { res: '🥤', val: 12 }, '🐟🔥': { res: '🍗', val: 20 },
-            '🐟🧂': { res: '🍱', val: 25 }, '🍎🔥': { res: '🥧', val: 18 },
-            '🥚💧': { res: '🍜', val: 22 }, '🍯💧': { res: '🍺', val: 15 }, '🧂💧': { res: '🌊', val: 5 }
-        };
-
-        function init() {
-            document.getElementById('score').innerText = "🪙 " + colinBalance;
-            const treeDiv = document.getElementById('trees');
-            for(let i=0; i<35; i++) {
-                const t = document.createElement('div'); t.className = 'tree'; t.innerText = '🌳';
-                t.style.left = (Math.random() * 1900 + 50) + 'px'; t.style.top = (Math.random() * 1900 + 50) + 'px';
-                treeDiv.appendChild(t);
-            }
-            spawnItems(25); updateCamera(); updateInventoryUI();
-        }
-
-        function spawnItems(count) {
-            for(let i=0; i<count; i++) {
-                activeItems.push({ emoji: rawItems[Math.floor(Math.random() * rawItems.length)], x: Math.random() * 1800 + 100, y: Math.random() * 1800 + 100, collected: false });
-            }
-            renderWorldItems();
-        }
-
-        function renderWorldItems() {
-            const container = document.getElementById('items'); container.innerHTML = '';
-            activeItems.forEach(item => {
-                if(!item.collected) {
-                    const d = document.createElement('div'); d.className = 'item'; d.innerText = item.emoji;
-                    d.style.left = item.x + 'px'; d.style.top = item.y + 'px';
-                    container.appendChild(d);
-                }
-            });
-        }
-
-        window.move = function(dx, dy) {
-            player.x = Math.max(50, Math.min(1950, player.x + dx));
-            player.y = Math.max(50, Math.min(1950, player.y + dy));
-            updateCamera();
-        };
-
-        function updateCamera() {
-            const ox = (window.innerWidth / 2) - player.x;
-            const oy = (window.innerHeight / 2) - player.y;
-            document.getElementById('world').style.transform = "translate(" + ox + "px," + oy + "px)";
-        }
-
-        window.pickup = function() {
-            let found = false;
-            activeItems.forEach(item => {
-                if(!item.collected && Math.hypot(player.x - item.x, player.y - item.y) < 70) {
-                    const emptyIdx = inventory.indexOf(null);
-                    if(emptyIdx !== -1 && !found) {
-                        inventory[emptyIdx] = item.emoji;
-                        item.collected = true;
-                        found = true;
-                    }
-                }
-            });
-            if(found) { updateInventoryUI(); renderWorldItems(); if(activeItems.filter(i => !i.collected).length < 8) spawnItems(10); }
-        };
-
-        window.craft = function() {
-            const held = inventory.filter(i => i !== null);
-            if(held.length < 2) { alert("Grab 2 items first!"); return; }
-            const a = held[0], b = held[1];
-            const res = recipes[a+b] || recipes[b+a];
-            if(res) {
-                let rem = 0;
-                for(let i=0; i<inventory.length; i++){ if((inventory[i]===a||inventory[i]===b)&&rem<2){inventory[i]=null; rem++;} }
-                inventory[inventory.indexOf(null)] = res.res;
-                colinBalance += res.val;
-                localStorage.setItem('mixGuyColin', colinBalance);
-                document.getElementById('score').innerText = "🪙 " + colinBalance;
-                alert("Success: " + res.res);
-            } else { alert("Mixing failed!"); }
-            updateInventoryUI();
-        };
-
-        function updateInventoryUI() {
-            const filt = inventory.filter(i => i !== null);
-            inventory = [null, null, null, null];
-            filt.forEach((item, i) => { if(i < 4) inventory[i] = item; });
-            const slots = document.querySelectorAll('.slot');
-            inventory.forEach((item, i) => { slots[i].innerText = item || '⚫'; });
-        }
-
-        window.resetInventory = function() { inventory = [null, null, null, null]; updateInventoryUI(); };
-        window.showRecipes = function() {
-            let l = "📜 RECIPES:\\n";
-            for(let k in recipes) l += k + " = " + recipes[k].res + "\\n";
-            alert(l);
-        };
-        init();
-    <\/script>
-</body>
-</html>`;
-
-        
-  
-  document.getElementById('playCustomModal').style.display = 'flex';
-  var runner = document.getElementById('gameRunner');
-  var doc = runner.contentWindow.document;
-  doc.open();
-  doc.write(mixGuyCode);
-  doc.close();
-}
-    
-
-    window.saveNewGame = () => {
-      const name = document.getElementById('customGameName').value, 
-            code = document.getElementById('customGameCode').value, 
-            file = document.getElementById('customGameIcon').files[0];
-      if (!name || !code || !file) return alert("Fill all!");
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
-        games.push({ id: Date.now(), name, code, icon: e.target.result });
-        localStorage.setItem('myCustomGames', JSON.stringify(games));
-        location.reload();
-      };
-      reader.readAsDataURL(file);
-    };
-
-    window.deleteGame = (id) => { 
-      if (confirm("Delete?")) { 
-        let games = JSON.parse(localStorage.getItem('myCustomGames') || '[]'); 
-        localStorage.setItem('myCustomGames', JSON.stringify(games.filter(g => g.id !== id))); 
-        location.reload(); 
-      } 
     };
 
     const COOLDOWN = 24 * 60 * 60 * 1000;
     setInterval(() => {
       const last = localStorage.getItem('lastDailyClaim');
       const display = document.getElementById('TIMES');
-      if (!last) return display.innerText = "READY!";
-      const left = (parseInt(last) + COOLDOWN) - Date.now();
-      if (left <= 0) display.innerText = "READY!";
+      if (!last) display.innerText = "READY!";
       else {
-        const h = Math.floor(left / 3600000), m = Math.floor((left % 3600000) / 60000), s = Math.floor((left % 60000) / 1000);
-        display.innerText = `${h}h ${m}m ${s}s`;
+        const left = (parseInt(last) + COOLDOWN) - Date.now();
+        if (left <= 0) display.innerText = "READY!";
+        else {
+          const h = Math.floor(left / 3600000);
+          const m = Math.floor((left % 3600000) / 60000);
+          const s = Math.floor((left % 60000) / 1000);
+          display.innerText = `${h}h ${m}m ${s}s`;
+        }
       }
     }, 1000);
 
@@ -601,18 +480,28 @@ function openMixGuy() {
       if (!last || Date.now() > (parseInt(last) + COOLDOWN)) {
         localStorage.setItem('mixGuyColin', parseInt(localStorage.getItem('mixGuyColin') || '0') + 300);
         localStorage.setItem('lastDailyClaim', Date.now());
-        updateMainColin(); alert("🎁 +300 Colin!");
+        updateMainColin(); 
+        alert("🎁 +300 Colin!");
       } else alert("Wait!");
     };
 
     window.onload = () => {
+      if (!localStorage.getItem('active_body')) {
+        localStorage.setItem('active_body', 'basebody');
+      }
       updateMainColin();
       updatePFP();
+      
+      // Load custom games
       const games = JSON.parse(localStorage.getItem('myCustomGames') || '[]');
       games.forEach(g => {
         const card = document.createElement('div');
         card.className = 'game-card';
-        card.innerHTML = `<img src="${g.icon}"><p>${g.name}</p><button class="delete-game-btn" onclick="event.stopPropagation(); deleteGame(${g.id})">✕</button>`;
+        card.innerHTML = `
+          <img src="${g.icon}">
+          <p>${g.name}</p>
+          <button class="delete-game-btn" onclick="event.stopPropagation(); deleteGame(${g.id})">✕</button>
+        `;
         card.onclick = () => { 
           document.getElementById('playCustomModal').style.display = 'flex'; 
           document.getElementById('gameRunner').srcdoc = g.code;
@@ -620,6 +509,7 @@ function openMixGuy() {
         document.getElementById('mainContainer').appendChild(card);
       });
     };
+    
     document.getElementById('storebut').onclick = () => document.getElementById('storeModal').style.display = 'flex';
   </script>
 </body>
